@@ -28,21 +28,27 @@
  */
 package freecasino.games.table;
 
+import freecasino.Game;
 import freecasino.Player;
 import freecasino.games.table.TableGame;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class RedDog implements TableGame {
-    private Player[] players;
+public class RedDog extends Game implements TableGame {
+    private ArrayList<Player> players;
     private BigDecimal betMinimum;
     private BigDecimal betMaximum;
 
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

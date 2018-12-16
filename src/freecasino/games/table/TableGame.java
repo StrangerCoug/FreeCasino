@@ -30,12 +30,13 @@ package freecasino.games.table;
 
 import freecasino.Player;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public interface TableGame {
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum);
 }

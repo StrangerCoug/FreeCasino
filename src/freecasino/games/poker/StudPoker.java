@@ -28,12 +28,20 @@
  */
 package freecasino.games.poker;
 
+import freecasino.Player;
 import freecasino.games.table.TableGame;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class StudPoker extends Poker implements TableGame {
-      
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
+    public abstract void play(ArrayList<Player> players, BigDecimal betMinimum,
+                BigDecimal betMaximum);
 }

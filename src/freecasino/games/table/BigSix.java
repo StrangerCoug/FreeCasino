@@ -28,15 +28,17 @@
  */
 package freecasino.games.table;
 
+import freecasino.Game;
 import freecasino.games.table.TableGame;
 import freecasino.Player;
 import freecasino.objs.Wheel;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class BigSix implements TableGame {
+public class BigSix extends Game implements TableGame {
     private enum Stop {
         ONE(1), TWO(2), FIVE(5), TEN(10), TWENTY(20), JOKER(40), LOGO(40);
         private final int value;
@@ -50,13 +52,17 @@ public class BigSix implements TableGame {
         }
     };
     
-    private Player[] players;
+    private ArrayList<Player> players;
     private BigDecimal betMinimum;
     private BigDecimal betMaximum;
     private Wheel wheel;
 
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

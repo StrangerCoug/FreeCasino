@@ -28,6 +28,7 @@
  */
 package freecasino.games.table;
 
+import freecasino.Game;
 import freecasino.Player;
 import freecasino.objs.Bet;
 import java.math.BigDecimal;
@@ -37,6 +38,7 @@ import freecasino.games.table.TableGame;
 import freecasino.enums.Action;
 import freecasino.objs.Card;
 import freecasino.objs.Deck;
+import java.util.ArrayList;
 
 /**
  * The class for a baccarat (more specifically, punto banco) game. The game
@@ -48,16 +50,20 @@ import freecasino.objs.Deck;
  * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Baccarat implements TableGame {
-    private Player[] players;
+public class Baccarat extends Game implements TableGame {
+    private ArrayList<Player> players;
     private BigDecimal betMinimum;
     private BigDecimal betMaximum;
     private Deck deck;
     private LinkedList<Card> playerHand, bankerHand;
     private HashSet<Bet> playerBets, bankerBets, tieBets;
     
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

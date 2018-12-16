@@ -28,6 +28,7 @@
  */
 package freecasino.games.table;
 
+import freecasino.Game;
 import freecasino.games.table.TableGame;
 import freecasino.Player;
 import freecasino.enums.CardRank;
@@ -35,6 +36,7 @@ import freecasino.objs.Bet;
 import freecasino.objs.Card;
 import freecasino.objs.Deck;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -42,8 +44,8 @@ import java.util.LinkedList;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Blackjack implements TableGame {
-    private Player[] players;
+public class Blackjack extends Game implements TableGame {
+    private ArrayList<Player> players;
     private BigDecimal betMinimum;
     private BigDecimal betMaximum;
     private Deck deck;
@@ -51,8 +53,12 @@ public class Blackjack implements TableGame {
     private LinkedList<Card> dealerHand;
     private HashSet<Bet> bets;
             
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

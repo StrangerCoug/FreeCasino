@@ -28,10 +28,12 @@
  */
 package freecasino.games.table;
 
+import freecasino.Game;
 import freecasino.games.table.TableGame;
 import freecasino.Player;
 import freecasino.objs.Wheel;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  * Because of the need for a different wheel for American and European roulette,
@@ -41,8 +43,8 @@ import java.math.BigDecimal;
  * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public abstract class Roulette implements TableGame {
-    protected Player[] players;
+public abstract class Roulette extends Game implements TableGame {
+    protected ArrayList<Player> players;
     protected BigDecimal betMinimum;
     protected BigDecimal betMaximum;
     protected Wheel wheel;
@@ -96,8 +98,12 @@ public abstract class Roulette implements TableGame {
         }
     }
     
+    public void play(ArrayList<Player> players) {
+        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+    }
+    
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

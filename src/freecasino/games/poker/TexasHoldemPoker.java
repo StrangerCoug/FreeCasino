@@ -31,6 +31,7 @@ package freecasino.games.poker;
 import freecasino.games.poker.CommunityCardPoker;
 import freecasino.Player;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,7 +39,7 @@ import java.math.BigDecimal;
  */
 public class TexasHoldemPoker extends CommunityCardPoker {
     @Override
-    public void play(Player[] players, BigDecimal betMinimum,
+    public void play(ArrayList<Player> players, BigDecimal betMinimum,
             BigDecimal betMaximum) {
         this.players = players;
         this.betMinimum = betMinimum;

@@ -28,6 +28,15 @@
  */
 package freecasino;
 
+import freecasino.games.Keno;
+import freecasino.games.table.Baccarat;
+import freecasino.games.table.BigSix;
+import freecasino.games.table.Blackjack;
+import freecasino.games.table.Craps;
+import freecasino.games.table.RedDog;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
@@ -39,6 +48,104 @@ public class FreeCasino {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        boolean validInput = false, playAgain = false;
+        String entry;
+        Game game = null;
+        ArrayList players;
+        
+        while (true) {
+            do {
+                System.out.println("Select game to play or type \"QUIT\" to "
+                        +" quit:\n"
+                        + "1. Baccarat\n"
+                        + "2. Big Six\n"
+                        + "3. Blackjack\n"
+                        + "4. Craps\n"
+                        + "5. Keno\n"
+                        + "6. Poker\n"
+                        + "7. Red Dog\n"
+                        + "8. Roulette\n"
+                        + "9. Video Poker");
+                entry = input.nextLine();
+                if (entry.equalsIgnoreCase("quit")) {
+                    input.close();
+                    System.exit(0);
+                }
+                try {
+                    int gameSelected = Integer.parseInt(entry);
+                    if (gameSelected >= 1 && gameSelected <= 18)
+                        validInput = true;
+                    game = returnGame(gameSelected);
+                }
+                catch (NumberFormatException e) {
+                    System.out.println("Invalid input.");
+                }
+                catch (IllegalArgumentException e) {
+                    System.out.println("Invalid game number.");
+                }
+            } while (!validInput);
+            
+            validInput = false;
+            int numPlayers = 0;
+            do {
+                try {
+                    System.out.print("How many players would you like? ");
+                    entry = input.nextLine();
+                    numPlayers = Integer.parseInt(entry);
+                    if (numPlayers < 1) {
+                        System.out.println("You must enter a positive "
+                                + "integer.");
+                    }
+                }
+                catch(NumberFormatException e) {
+                    System.out.print("Invalid input.");
+                }
+            } while (numPlayers < 1);
+            players = new ArrayList<Player>(numPlayers);
+            for (int i = 1; i <= numPlayers; i++) {
+                System.out.print("Enter name of player #" + i + ": ");
+                entry = input.nextLine();
+                players.add(new Player(entry));
+            }
+            System.out.println("Good luck!");
+            
+            do {
+                game.play(players);
+                validInput = false;
+                do {
+                    System.out.print("Play again? (Y/N): ");
+                    char selection = input.nextLine().charAt(0);
+                    switch (selection) {
+                        case 'Y': case 'y':
+                            validInput = true;
+                            playAgain = true;
+                            break;
+                        case 'N': case 'n':
+                            validInput = true;
+                            playAgain = false;
+                            break;
+                        default:
+                            validInput = false;
+                            System.out.println("Invalid selection.");
+                    }
+                } while (!validInput);
+            } while (playAgain);
+        }
     }
     
+    private static Game returnGame(int i) {
+        switch (i) {
+            case 1: return new Baccarat();
+            case 2: return new BigSix();
+            case 3: return new Blackjack();
+            case 4: return new Craps();
+            case 5: return new Keno();
+            case 6: // Poker
+            case 7: return new RedDog();
+            case 8: // Roulette
+            case 9: // Video Poker
+            default: throw new IllegalArgumentException();
+        }
+    }
 }

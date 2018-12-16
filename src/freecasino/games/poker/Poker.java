@@ -33,13 +33,14 @@ import freecasino.enums.CardRank;
 import freecasino.objs.Card;
 import freecasino.objs.Deck;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Poker {
-    protected Player[] players;
+    protected ArrayList<Player> players;
     protected BigDecimal betMinimum;
     protected BigDecimal betMaximum;
     protected Deck deck;

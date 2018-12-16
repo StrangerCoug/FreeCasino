@@ -28,10 +28,19 @@
  */
 package freecasino.games;
 
+import freecasino.Game;
+import freecasino.Player;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Keno {
+public class Keno extends Game {
+
+    @Override
+    public void play(ArrayList<Player> players) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
