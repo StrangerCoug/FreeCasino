@@ -5,7 +5,7 @@ This is planned to be a free and open source cross-platform Java casino program.
 3. Blackjack
 4. Craps
 5. Keno
-6. Poker (many popular variations of both ring and video poker
+6. Poker (many popular variations of both ring and video poker)
 7. Red Dog (both the American double-zero game and the European single-zero game)
 8. Roulette
 
