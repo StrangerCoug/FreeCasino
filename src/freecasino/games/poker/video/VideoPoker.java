@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2019, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@
  */
 package freecasino.games.poker.video;
 
+import freecasino.enums.PokerHand;
 import freecasino.games.poker.Poker;
 import freecasino.games.electronic.ElectronicGame;
 import freecasino.objs.Card;
@@ -68,4 +69,6 @@ public abstract class VideoPoker extends Poker implements ElectronicGame {
         creditsIn = 0;
         return ejectedCredits;
     }
+    
+    public abstract int rowSelect(PokerHand hand);
 }

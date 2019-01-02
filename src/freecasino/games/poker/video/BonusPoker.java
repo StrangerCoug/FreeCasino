@@ -28,6 +28,7 @@
  */
 package freecasino.games.poker.video;
 
+import freecasino.enums.PokerHand;
 import freecasino.games.poker.video.VideoPoker;
 
 /**
@@ -35,5 +36,10 @@ import freecasino.games.poker.video.VideoPoker;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class BonusPoker extends VideoPoker {
+
+    @Override
+    public int rowSelect(PokerHand hand) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
