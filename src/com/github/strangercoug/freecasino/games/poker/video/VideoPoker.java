@@ -39,36 +39,36 @@ import java.math.BigDecimal;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class VideoPoker extends Poker implements ElectronicGame {
-    protected Card[] hand;
-    protected int[][] payTable;
-    protected int creditsIn, creditsWon, creditsBet;
-    protected BigDecimal denomination;
+	protected Card[] hand;
+	protected int[][] payTable;
+	protected int creditsIn, creditsWon, creditsBet;
+	protected BigDecimal denomination;
 
-    @Override
-    public void insertCredits(BigDecimal funds) {
-        BigDecimal credits = funds.multiply(denomination);
-        creditsIn = credits.intValue();
-    }
+	@Override
+	public void insertCredits(BigDecimal funds) {
+		BigDecimal credits = funds.multiply(denomination);
+		creditsIn = credits.intValue();
+	}
 
-    @Override
-    public void betCredits(int credits) {
-        creditsBet = credits;
-        creditsIn -= creditsBet;
-    }
+	@Override
+	public void betCredits(int credits) {
+		creditsBet = credits;
+		creditsIn -= creditsBet;
+	}
 
-    @Override
-    public void awardCredits(int credits) {
-        creditsWon = credits;
-        creditsIn += creditsWon;
-    }
+	@Override
+	public void awardCredits(int credits) {
+		creditsWon = credits;
+		creditsIn += creditsWon;
+	}
 
-    @Override
-    public BigDecimal ejectCredits() {
-        BigDecimal ejectedCredits = denomination.multiply(BigDecimal.valueOf
-                (creditsIn));
-        creditsIn = 0;
-        return ejectedCredits;
-    }
-    
-    public abstract int rowSelect(PokerHand hand);
+	@Override
+	public BigDecimal ejectCredits() {
+		BigDecimal ejectedCredits = denomination.multiply(BigDecimal.valueOf
+				(creditsIn));
+		creditsIn = 0;
+		return ejectedCredits;
+	}
+	
+	public abstract int rowSelect(PokerHand hand);
 }

@@ -33,24 +33,24 @@ package com.github.strangercoug.freecasino.exceptions;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class BetTooHighException extends RuntimeException {
-    private static final long serialVersionUID = 8527163021665546837L;
-    
-    public BetTooHighException() {}
-    
-    public BetTooHighException(String message) {
-        super(message);
-    }
-    
-    public BetTooHighException(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
-    public BetTooHighException(String message, Throwable cause, boolean
-            enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
-    
-    public BetTooHighException(Throwable cause) {
-        super(cause);
-    }
+	private static final long serialVersionUID = 8527163021665546837L;
+	
+	public BetTooHighException() {}
+	
+	public BetTooHighException(String message) {
+		super(message);
+	}
+	
+	public BetTooHighException(String message, Throwable cause) {
+		super(message, cause);
+	}
+	
+	public BetTooHighException(String message, Throwable cause, boolean
+			enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
+	
+	public BetTooHighException(Throwable cause) {
+		super(cause);
+	}
 }

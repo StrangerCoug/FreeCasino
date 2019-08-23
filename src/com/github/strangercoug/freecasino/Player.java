@@ -38,33 +38,33 @@ import java.math.RoundingMode;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Player {
-    private String name;
-    private BigDecimal funds;
+	private String name;
+	private BigDecimal funds;
 
-    public Player(String name, BigDecimal funds) {
-        this.name = name;
-        this.funds = funds.setScale(2, RoundingMode.HALF_EVEN);
-    }
-    
-    public Player(String name) {
-        this(name, new BigDecimal(1000, MathContext.DECIMAL64));
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public BigDecimal getFunds() {
-        return funds;
-    }
-    
-    public void addFunds(BigDecimal fundsCredited) {
-        funds = funds.add(fundsCredited);
-    }
-    
-    public void subtractFunds(BigDecimal fundsDebited) {
-        if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) == -1)
-            throw new InsufficientFundsException();
-        funds = funds.subtract(fundsDebited);
-    }
+	public Player(String name, BigDecimal funds) {
+		this.name = name;
+		this.funds = funds.setScale(2, RoundingMode.HALF_EVEN);
+	}
+	
+	public Player(String name) {
+		this(name, new BigDecimal(1000, MathContext.DECIMAL64));
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public BigDecimal getFunds() {
+		return funds;
+	}
+	
+	public void addFunds(BigDecimal fundsCredited) {
+		funds = funds.add(fundsCredited);
+	}
+	
+	public void subtractFunds(BigDecimal fundsDebited) {
+		if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) == -1)
+			throw new InsufficientFundsException();
+		funds = funds.subtract(fundsDebited);
+	}
 }

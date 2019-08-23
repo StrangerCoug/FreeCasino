@@ -35,8 +35,8 @@ import java.math.BigDecimal;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public interface ElectronicGame {
-    public void insertCredits(BigDecimal funds);
-    public void betCredits(int credits);
-    public void awardCredits(int credits);
-    public BigDecimal ejectCredits();
+	public void insertCredits(BigDecimal funds);
+	public void betCredits(int credits);
+	public void awardCredits(int credits);
+	public BigDecimal ejectCredits();
 }

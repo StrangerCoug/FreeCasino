@@ -38,11 +38,11 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class TexasHoldemPoker extends CommunityCardPoker {
-    @Override
-    public void play(ArrayList<Player> players, BigDecimal betMinimum,
-            BigDecimal betMaximum) {
-        this.players = players;
-        this.betMinimum = betMinimum;
-        this.betMaximum = betMaximum;
-    }
+	@Override
+	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+			BigDecimal betMaximum) {
+		this.players = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
+	}
 }

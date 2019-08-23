@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
-    ArrayList<Player> players;
-    
-    public abstract void play(ArrayList<Player> players);
+	ArrayList<Player> players;
+	
+	public abstract void play(ArrayList<Player> players);
 }

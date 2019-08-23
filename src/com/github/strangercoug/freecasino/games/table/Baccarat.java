@@ -51,129 +51,129 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Baccarat extends Game implements TableGame {
-    private ArrayList<Player> players;
-    private BigDecimal betMinimum;
-    private BigDecimal betMaximum;
-    private Deck deck;
-    private LinkedList<Card> playerHand, bankerHand;
-    private HashSet<Bet> playerBets, bankerBets, tieBets;
-    
-    public void play(ArrayList<Player> players) {
-        play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
-    }
-    
-    @Override
-    public void play(ArrayList<Player> players, BigDecimal betMinimum,
-            BigDecimal betMaximum) {
-        this.players = players;
-        this.betMinimum = betMinimum;
-        this.betMaximum = betMaximum;
-        deck = new Deck(8);
-    }
-    
-    private void deal() {
-        for (int i = 0; i < 2; i++) {
-            playerHand.add(deck.dealCard());
-            bankerHand.add(deck.dealCard());
-        }
-        
-        if (isNatural(playerHand) || isNatural(bankerHand))
-            return;
-        
-        if (getPlayerAction(playerHand) == Action.HIT)
-            playerHand.add(deck.dealCard());
-        
-        if (getBankerAction(playerHand, bankerHand) == Action.HIT)
-            bankerHand.add(deck.dealCard());
-    }
-    
-    /**
-     * 
-     * 
-     * @param card the card whose value is being checked
-     * @return the card's value
-     */
-    private int getCardValue(Card card) {
-        switch (card.getRank()) {
-            case ACE: return 1;
-            case TWO: return 2;
-            case THREE: return 3;
-            case FOUR: return 4;
-            case FIVE: return 5;
-            case SIX: return 6;
-            case SEVEN: return 7;
-            case EIGHT: return 8;
-            case NINE: return 9;
-            default: return 0;
-        }
-    }
-    
-    /**
-     * 
-     * 
-     * @param hand the hand whose value is being checked
-     * @return the hand's value
-     */
-    private int getHandValue(LinkedList<Card> hand) {
-        int total = 0;
-        
-        for (int i = 0; i < hand.size(); i++)
-            total += getCardValue(hand.get(i));
-        
-        return total % 10;
-    }
-    
-    private boolean isNatural(LinkedList<Card> hand) {
-        return hand.size() == 2 && (getHandValue(hand) == 8 ||
-                getHandValue(hand) == 9);
-    }
-    
-    private LinkedList<Card> determineWinningHand(LinkedList<Card> playerHand,
-            LinkedList<Card> bankerHand) {
-        if (getHandValue(playerHand) < getHandValue(bankerHand))
-            return bankerHand;
-        if (getHandValue(playerHand) > getHandValue(bankerHand))
-            return playerHand;
-        return null; // as an indicator of a tie
-    }
-    
-    /**
-     * 
-     * @param playerHand the player's hand
-     * @return the action the player should take
-     */
-    private Action getPlayerAction(LinkedList<Card> playerHand) {
-        if (getHandValue(playerHand) >= 5)
-            return Action.HIT;
-        else return Action.STAND;
-    }
-    
-    /**
-     * Must be called after getPlayerAction(playerHand) to work correctly.
-     * 
-     * @param bankerHand the banker's hand
-     * @param playerHand the player's hand
-     * @return the action the banker should take
-     */
-    private Action getBankerAction(LinkedList<Card> playerHand, LinkedList<Card>
-            bankerHand) {
-        if (playerHand.size() == 2) // that is, if player stood
-            return getPlayerAction(bankerHand);
-        else {
-            int thirdCardValue = getCardValue(playerHand.get(2));
-            
-            /* This is actually a clever way to determine the correct banker
-             * action if the player drew to limit the number of comparisons to
-             * two--one at the beginning and one at the end.
-             */
-            if (thirdCardValue > 7)
-                thirdCardValue -= 10;
-            
-            int bankerGoal = thirdCardValue / 2 + 3;
-            
-            if (getHandValue(bankerHand) <= bankerGoal)
-                return Action.HIT;
-            else return Action.STAND;
-        }
-    }
+	private ArrayList<Player> players;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
+	private Deck deck;
+	private LinkedList<Card> playerHand, bankerHand;
+	private HashSet<Bet> playerBets, bankerBets, tieBets;
+	
+	public void play(ArrayList<Player> players) {
+		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+	}
+	
+	@Override
+	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+			BigDecimal betMaximum) {
+		this.players = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
+		deck = new Deck(8);
+	}
+	
+	private void deal() {
+		for (int i = 0; i < 2; i++) {
+			playerHand.add(deck.dealCard());
+			bankerHand.add(deck.dealCard());
+		}
+		
+		if (isNatural(playerHand) || isNatural(bankerHand))
+			return;
+		
+		if (getPlayerAction(playerHand) == Action.HIT)
+			playerHand.add(deck.dealCard());
+		
+		if (getBankerAction(playerHand, bankerHand) == Action.HIT)
+			bankerHand.add(deck.dealCard());
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param card the card whose value is being checked
+	 * @return the card's value
+	 */
+	private int getCardValue(Card card) {
+		switch (card.getRank()) {
+			case ACE: return 1;
+			case TWO: return 2;
+			case THREE: return 3;
+			case FOUR: return 4;
+			case FIVE: return 5;
+			case SIX: return 6;
+			case SEVEN: return 7;
+			case EIGHT: return 8;
+			case NINE: return 9;
+			default: return 0;
+		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param hand the hand whose value is being checked
+	 * @return the hand's value
+	 */
+	private int getHandValue(LinkedList<Card> hand) {
+		int total = 0;
+		
+		for (int i = 0; i < hand.size(); i++)
+			total += getCardValue(hand.get(i));
+		
+		return total % 10;
+	}
+	
+	private boolean isNatural(LinkedList<Card> hand) {
+		return hand.size() == 2 && (getHandValue(hand) == 8 ||
+				getHandValue(hand) == 9);
+	}
+	
+	private LinkedList<Card> determineWinningHand(LinkedList<Card> playerHand,
+			LinkedList<Card> bankerHand) {
+		if (getHandValue(playerHand) < getHandValue(bankerHand))
+			return bankerHand;
+		if (getHandValue(playerHand) > getHandValue(bankerHand))
+			return playerHand;
+		return null; // as an indicator of a tie
+	}
+	
+	/**
+	 * 
+	 * @param playerHand the player's hand
+	 * @return the action the player should take
+	 */
+	private Action getPlayerAction(LinkedList<Card> playerHand) {
+		if (getHandValue(playerHand) >= 5)
+			return Action.HIT;
+		else return Action.STAND;
+	}
+	
+	/**
+	 * Must be called after getPlayerAction(playerHand) to work correctly.
+	 * 
+	 * @param bankerHand the banker's hand
+	 * @param playerHand the player's hand
+	 * @return the action the banker should take
+	 */
+	private Action getBankerAction(LinkedList<Card> playerHand, LinkedList<Card>
+			bankerHand) {
+		if (playerHand.size() == 2) // that is, if player stood
+			return getPlayerAction(bankerHand);
+		else {
+			int thirdCardValue = getCardValue(playerHand.get(2));
+			
+			/* This is actually a clever way to determine the correct banker
+			 * action if the player drew to limit the number of comparisons to
+			 * two--one at the beginning and one at the end.
+			 */
+			if (thirdCardValue > 7)
+				thirdCardValue -= 10;
+			
+			int bankerGoal = thirdCardValue / 2 + 3;
+			
+			if (getHandValue(bankerHand) <= bankerGoal)
+				return Action.HIT;
+			else return Action.STAND;
+		}
+	}
 }

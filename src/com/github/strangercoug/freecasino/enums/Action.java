@@ -40,5 +40,5 @@ package com.github.strangercoug.freecasino.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum Action {
-    HIT, STAND, DOUBLE, SPLIT, SURRENDER
+	HIT, STAND, DOUBLE, SPLIT, SURRENDER
 }

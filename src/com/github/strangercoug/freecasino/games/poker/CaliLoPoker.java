@@ -38,12 +38,12 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class CaliLoPoker extends DrawPoker {
-    @Override
-    public void play(ArrayList<Player> players, BigDecimal betMinimum,
-            BigDecimal betMaximum) {
-        this.players = players;
-        this.betMinimum = betMinimum;
-        this.betMaximum = betMaximum;
-    }
-    
+	@Override
+	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+			BigDecimal betMaximum) {
+		this.players = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
+	}
+	
 }

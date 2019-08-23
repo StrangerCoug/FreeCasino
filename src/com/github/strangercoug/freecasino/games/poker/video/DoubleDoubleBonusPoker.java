@@ -37,9 +37,9 @@ import com.github.strangercoug.freecasino.games.poker.video.VideoPoker;
  */
 public class DoubleDoubleBonusPoker extends VideoPoker {
 
-    @Override
-    public int rowSelect(PokerHand hand) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+	@Override
+	public int rowSelect(PokerHand hand) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
 }
