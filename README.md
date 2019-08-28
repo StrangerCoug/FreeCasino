@@ -11,4 +11,4 @@ This is planned to be a free and open source cross-platform Java casino program.
 
 I am open to adding more games over time (sic bo, British and Australian pontoon, more poker games, etc.) but I think this is a good set of games to start with.
 
-Feel free to chip in if you'd like to help! Please read the [contributing guidelines](/CONTRIBUTING.md) before you begin.
+Feel free to chip in if you'd like to help! Please read the [contributing guidelines](/CONTRIBUTING.md) before you begin. This is a [Maven](https://maven.apache.org/) project; therefore, you will need Maven to build the program.
