@@ -7,3 +7,6 @@ Before contributing, please read the following:
 In general, code should closely follow Oracle's style guide for both [Java](https://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html) and [JavaDoc](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html). They were written to ensure consistency, legibility, and maintainability. Deviating from the letter of Oracle's guides is fine, but the general principles behind them apply to this project.
 
 We slightly differ from Oracle's indentation convention in that we follow the "tabs for indentation, spaces for alignment" principle in this project. The tab character counts _once_ toward the 80-character limit per line just like everything else. For continuation indents, use two hard tabs.
+
+## Versioning scheme
+We use [Semantic Versioning 2.0.0](https://semver.org/) when assigning release numbers in this project.
