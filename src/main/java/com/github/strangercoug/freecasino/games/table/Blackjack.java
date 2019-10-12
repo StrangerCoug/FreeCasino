@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
-import com.github.strangercoug.freecasino.games.table.TableGame;
 import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.objs.Bet;
