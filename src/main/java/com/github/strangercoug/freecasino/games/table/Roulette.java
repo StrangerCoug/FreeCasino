@@ -98,6 +98,34 @@ public abstract class Roulette extends Game implements TableGame {
 		}
 	}
 	
+	/**
+	 * For legibility, this enum combines certain types of bets together that has
+	 * the same odds. For example, bets of 0-1-2, 0-00-2, and 0/00-2-3 are special
+	 * cases of the corner bets, not street bets; but in the internal logic they are
+	 * counted as street bets. For the same reason, 0-1-2-3 is treated as a corner
+	 * bet despite technically being a form of the double street bet.
+	 */
+	protected enum betType{
+		STRAIGHT(new BigDecimal(36)), SPLIT(new BigDecimal(18)),
+		STREET(new BigDecimal(12)), CORNER(new BigDecimal(9)),
+		BASKET(new BigDecimal(7)), DOUBLE_STREET(new BigDecimal(6)),
+		DOZEN(new BigDecimal(3)), HALF(new BigDecimal(2));
+		
+		/**
+		 * Because of the way {@code Bet.awardBet()}* works; this field holds the
+	     * odds "for 1", not the odds "to 1" (i.e. "2 for 1" in lieu for "1 to 1").
+		 */
+		private final BigDecimal odds;
+		
+		private betType(BigDecimal odds) {
+			this.odds = odds;
+		}
+		
+		public BigDecimal getOdds() {
+			return odds;
+		}
+	}
+	
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
