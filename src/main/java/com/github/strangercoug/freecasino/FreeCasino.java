@@ -42,12 +42,7 @@ import java.util.Scanner;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class FreeCasino {
-
-	/**
-	 * @param args the command line arguments
-	 */
 	public static void main(String[] args) {
-		// TODO code application logic here
 		Scanner input = new Scanner(System.in);
 		boolean validInput = false, playAgain = false;
 		String entry;
@@ -74,7 +69,7 @@ public class FreeCasino {
 				}
 				try {
 					int gameSelected = Integer.parseInt(entry);
-					if (gameSelected >= 1 && gameSelected <= 18)
+					if (gameSelected >= 1 && gameSelected <= 9)
 						validInput = true;
 					game = returnGame(gameSelected);
 				}
