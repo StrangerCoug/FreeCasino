@@ -78,9 +78,9 @@ public class Bet {
     }
     
     /**
-     * Returns how much a player wins with his or her bet. This does not
-     * automatically add the winnings to the player's total; to do that, call
-     * Player.addFunds(Bet.awardBet(odds)).
+     * Returns how much a player wins with his or her bet, including the stake. This
+     * does not automatically add the winnings to the player's total; to do that,
+     * call Player.addFunds(Bet.awardBet(odds)).
      * 
      * @param odds the exact odds of the bet
      * @return the amount the player won

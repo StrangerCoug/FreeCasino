@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
-import com.github.strangercoug.freecasino.games.table.TableGame;
 import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.objs.Wheel;
 import java.math.BigDecimal;
@@ -57,6 +56,7 @@ public class BigSix extends Game implements TableGame {
 	private BigDecimal betMaximum;
 	private Wheel wheel;
 
+	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}

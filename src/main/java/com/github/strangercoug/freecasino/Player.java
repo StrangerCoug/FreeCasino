@@ -38,7 +38,7 @@ import java.math.RoundingMode;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Player {
-	private String name;
+	private final String name;
 	private BigDecimal funds;
 
 	public Player(String name, BigDecimal funds) {
@@ -48,6 +48,14 @@ public class Player {
 	
 	public Player(String name) {
 		this(name, new BigDecimal(1000, MathContext.DECIMAL64));
+	}
+
+	public Player(BigDecimal funds) {
+		this("Anonymous", funds);
+	}
+	
+	public Player() {
+		this("Anonymous", new BigDecimal(1000, MathContext.DECIMAL64));
 	}
 	
 	public String getName() {

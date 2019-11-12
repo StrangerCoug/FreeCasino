@@ -34,7 +34,6 @@ import com.github.strangercoug.freecasino.objs.Bet;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.LinkedList;
-import com.github.strangercoug.freecasino.games.table.TableGame;
 import com.github.strangercoug.freecasino.enums.Action;
 import com.github.strangercoug.freecasino.objs.Card;
 import com.github.strangercoug.freecasino.objs.Deck;
@@ -58,6 +57,7 @@ public class Baccarat extends Game implements TableGame {
 	private LinkedList<Card> playerHand, bankerHand;
 	private HashSet<Bet> playerBets, bankerBets, tieBets;
 	
+	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}

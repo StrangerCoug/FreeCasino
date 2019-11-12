@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
-import com.github.strangercoug.freecasino.games.table.TableGame;
 import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.objs.Bet;
@@ -53,6 +52,7 @@ public class Blackjack extends Game implements TableGame {
 	private LinkedList<Card> dealerHand;
 	private HashSet<Bet> bets;
 			
+	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
