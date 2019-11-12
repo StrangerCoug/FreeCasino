@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.poker.video;
 
 import com.github.strangercoug.freecasino.enums.PokerHand;
-import com.github.strangercoug.freecasino.games.poker.video.VideoPoker;
 
 /**
  *

@@ -57,6 +57,7 @@ public class Baccarat extends Game implements TableGame {
 	private LinkedList<Card> playerHand, bankerHand;
 	private HashSet<Bet> playerBets, bankerBets, tieBets;
 	
+	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}

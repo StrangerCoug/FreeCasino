@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.poker;
 
 import com.github.strangercoug.freecasino.Player;
-import com.github.strangercoug.freecasino.games.poker.StudPoker;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 

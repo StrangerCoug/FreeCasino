@@ -29,7 +29,6 @@
 package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
-import com.github.strangercoug.freecasino.games.table.TableGame;
 import com.github.strangercoug.freecasino.Player;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,6 +42,7 @@ public class Craps extends Game implements TableGame {
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 
+	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}

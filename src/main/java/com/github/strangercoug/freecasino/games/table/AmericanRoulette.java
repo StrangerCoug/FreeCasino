@@ -28,7 +28,6 @@
  */
 package com.github.strangercoug.freecasino.games.table;
 
-import com.github.strangercoug.freecasino.games.table.Roulette;
 import com.github.strangercoug.freecasino.objs.Wheel;
 
 /**
