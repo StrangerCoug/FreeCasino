@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2020, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +47,7 @@ public abstract class Roulette extends Game implements TableGame {
 	protected BigDecimal betMinimum;
 	protected BigDecimal betMaximum;
 	protected Wheel wheel;
+	protected Stop result;
 	
 	protected enum Color {
 		GREEN, RED, BLACK
@@ -111,8 +112,8 @@ public abstract class Roulette extends Game implements TableGame {
 		DOZEN(new BigDecimal(3)), HALF(new BigDecimal(2));
 		
 		/**
-		 * Because of the way {@code Bet.awardBet()}* works; this field holds the
-	     * odds "for 1", not the odds "to 1" (i.e. "2 for 1" in lieu for "1 to 1").
+		 * Because of the way {@code Bet.awardBet()} works; this field holds the
+	     * odds "for 1", not the odds "to 1" (i.e. "2 for 1" in lieu of "1 to 1").
 		 */
 		private final BigDecimal odds;
 		
@@ -137,6 +138,8 @@ public abstract class Roulette extends Game implements TableGame {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 		this.wheel = generateWheel();
+		this.result = Stop.ZERO; /* HACK: supposed to be wheel.getWheelResult(); but
+		                          * that currently throws a type error */
 	}
 	
 	public abstract Wheel generateWheel();
