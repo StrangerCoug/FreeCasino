@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2020, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ package com.github.strangercoug.freecasino.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Wheel {
-    private Object[] stops;
+    private final Object[] stops;
     private int position;
     
     public Wheel(Object[] stops) {
