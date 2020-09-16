@@ -28,7 +28,6 @@
  */
 package com.github.strangercoug.freecasino.games.electronic;
 
-import com.github.strangercoug.freecasino.games.electronic.ElectronicGame;
 import java.math.BigDecimal;
 
 /**
