@@ -47,7 +47,7 @@ public abstract class VideoPoker extends Poker implements ElectronicGame {
 	@Override
 	public void insertCredits(BigDecimal funds) {
 		BigDecimal credits = funds.multiply(denomination);
-		creditsIn = credits.intValue();
+		creditsIn += credits.intValue();
 	}
 
 	@Override
