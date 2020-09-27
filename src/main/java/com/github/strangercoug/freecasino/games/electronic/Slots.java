@@ -43,7 +43,7 @@ public abstract class Slots implements ElectronicGame {
 	@Override
 	public void insertCredits(BigDecimal funds) {
 		BigDecimal credits = funds.multiply(denomination);
-		creditsIn = credits.intValue();
+		creditsIn += credits.intValue();
 	}
 
 	@Override
