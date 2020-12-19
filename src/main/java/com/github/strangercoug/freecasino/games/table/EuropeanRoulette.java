@@ -47,7 +47,7 @@ public class EuropeanRoulette extends Roulette {
 			Stop.TWENTY_TWO, Stop.EIGHTEEN, Stop.TWENTY_NINE, Stop.SEVEN,
 			Stop.TWENTY_EIGHT, Stop.TWELVE, Stop.THIRTY_FIVE, Stop.THREE,
 			Stop.TWENTY_SIX};
-		
+
 		return new Wheel(stops);
 	}
 }

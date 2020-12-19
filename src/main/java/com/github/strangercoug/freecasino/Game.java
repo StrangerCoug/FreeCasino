@@ -36,6 +36,6 @@ import java.util.ArrayList;
  */
 public abstract class Game {
 	ArrayList<Player> players;
-	
+
 	public abstract void play(ArrayList<Player> players);
 }

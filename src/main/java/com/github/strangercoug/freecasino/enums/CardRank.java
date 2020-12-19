@@ -33,6 +33,6 @@ package com.github.strangercoug.freecasino.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardRank {
-    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING,
-    ACE, JOKER
+	TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING,
+	ACE, JOKER
 }

@@ -44,5 +44,5 @@ public class CaliHiLoPoker extends DrawPoker {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 	}
-	
+
 }

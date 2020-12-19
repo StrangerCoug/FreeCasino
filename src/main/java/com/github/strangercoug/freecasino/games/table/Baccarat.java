@@ -56,12 +56,12 @@ public class Baccarat extends Game implements TableGame {
 	private Deck deck;
 	private LinkedList<Card> playerHand, bankerHand;
 	private HashSet<Bet> playerBets, bankerBets, tieBets;
-	
+
 	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
-	
+
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
@@ -70,23 +70,23 @@ public class Baccarat extends Game implements TableGame {
 		this.betMaximum = betMaximum;
 		deck = new Deck(8);
 	}
-	
+
 	private void deal() {
 		for (int i = 0; i < 2; i++) {
 			playerHand.add(deck.dealCard());
 			bankerHand.add(deck.dealCard());
 		}
-		
+
 		if (isNatural(playerHand) || isNatural(bankerHand))
 			return;
-		
+
 		if (getPlayerAction(playerHand) == Action.HIT)
 			playerHand.add(deck.dealCard());
-		
+
 		if (getBankerAction(playerHand, bankerHand) == Action.HIT)
 			bankerHand.add(deck.dealCard());
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -107,7 +107,7 @@ public class Baccarat extends Game implements TableGame {
 			default: return 0;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -116,18 +116,18 @@ public class Baccarat extends Game implements TableGame {
 	 */
 	private int getHandValue(LinkedList<Card> hand) {
 		int total = 0;
-		
+
 		for (int i = 0; i < hand.size(); i++)
 			total += getCardValue(hand.get(i));
-		
+
 		return total % 10;
 	}
-	
+
 	private boolean isNatural(LinkedList<Card> hand) {
 		return hand.size() == 2 && (getHandValue(hand) == 8 ||
 				getHandValue(hand) == 9);
 	}
-	
+
 	private LinkedList<Card> determineWinningHand(LinkedList<Card> playerHand,
 			LinkedList<Card> bankerHand) {
 		if (getHandValue(playerHand) < getHandValue(bankerHand))
@@ -136,7 +136,7 @@ public class Baccarat extends Game implements TableGame {
 			return playerHand;
 		return null; // as an indicator of a tie
 	}
-	
+
 	/**
 	 * 
 	 * @param playerHand the player's hand
@@ -147,7 +147,7 @@ public class Baccarat extends Game implements TableGame {
 			return Action.HIT;
 		else return Action.STAND;
 	}
-	
+
 	/**
 	 * Must be called after getPlayerAction(playerHand) to work correctly.
 	 * 
@@ -161,16 +161,16 @@ public class Baccarat extends Game implements TableGame {
 			return getPlayerAction(bankerHand);
 		else {
 			int thirdCardValue = getCardValue(playerHand.get(2));
-			
+
 			/* This is actually a clever way to determine the correct banker
 			 * action if the player drew to limit the number of comparisons to
 			 * two--one at the beginning and one at the end.
 			 */
 			if (thirdCardValue > 7)
 				thirdCardValue -= 10;
-			
+
 			int bankerGoal = thirdCardValue / 2 + 3;
-			
+
 			if (getHandValue(bankerHand) <= bankerGoal)
 				return Action.HIT;
 			else return Action.STAND;

@@ -44,7 +44,7 @@ public abstract class Poker {
 	protected BigDecimal betMinimum;
 	protected BigDecimal betMaximum;
 	protected Deck deck;
-	
+
 	/**
 	 * The ranks in poker. The order of these should not be altered, even though
 	 * hands do not rank in this order in all games. If a game ranks these hands
@@ -56,62 +56,62 @@ public abstract class Poker {
 		FOUR_OF_A_KIND, STRAIGHT_FLUSH, WILD_ROYAL_FLUSH, ROYAL_FLUSH,
 		FIVE_OF_A_KIND;
 	}
-	
+
 	private int[] countRanks(Card[] hand) {
 		int[] cardsPerRank = new int[14];
-		
+
 		for (Card hand1 : hand) {
 			cardsPerRank[hand1.getRank().ordinal()]++;
 		}
-		
+
 		return cardsPerRank;
 	}
-	
+
 	public boolean isFiveOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
-		
+
 		switch (cardsPerRank[CardRank.JOKER.ordinal()]) {
 			case 1: return isFourOfAKind(hand);
 			case 2: return isThreeOfAKind(hand);
 			default: return false;
 		}
 	}
-	
+
 	public boolean isFourOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
-		
+
 		for (int i = 0; i < cardsPerRank.length; i++)
 			if (cardsPerRank[i] == 4)
 				return true;
-		
+
 		return false;
 	}
-	
+
 	public boolean isFlush(Card[] hand) {
 		for (int i = 1; i < hand.length; i++)
 			if (!hand[i].getSuit().equals(hand[i-1].getSuit()))
 				return false;
-		
+
 		return true;
 	}
-	
+
 	public boolean isThreeOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
-		
+
 		for (int i = 0; i < cardsPerRank.length; i++)
 			if (cardsPerRank[i] == 3)
 				return true;
-		
+
 		return false;
 	}
-	
+
 	public boolean isPair(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
-		
+
 		for (int i = 0; i < cardsPerRank.length; i++)
 			if (cardsPerRank[i] == 2)
 				return true;
-		
+
 		return false;
 	}
 }

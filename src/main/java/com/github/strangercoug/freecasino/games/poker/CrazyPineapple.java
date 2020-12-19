@@ -44,5 +44,5 @@ public class CrazyPineapple extends CommunityCardPoker {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 	}
-	
+
 }

@@ -47,7 +47,7 @@ public class AmericanRoulette extends Roulette {
 			Stop.EIGHTEEN, Stop.SIX, Stop.TWENTY_ONE, Stop.THIRTY_THREE,
 			Stop.SIXTEEN, Stop.FOUR, Stop.TWENTY_THREE, Stop.THIRTY_FIVE,
 			Stop.FOURTEEN, Stop.TWO};
-		
+
 		return new Wheel(stops);
 	}
 }

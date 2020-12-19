@@ -51,27 +51,27 @@ public class Blackjack extends Game implements TableGame {
 	private LinkedList<LinkedList<Card>> playerHands;
 	private LinkedList<Card> dealerHand;
 	private HashSet<Bet> bets;
-			
+
 	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
-	
+
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
 		this.players = players;
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
-		
+
 		playerHands = new LinkedList<>();
 		dealerHand = new LinkedList<>();
-		
+
 		for (Player player : players) {
 			playerHands.add(new LinkedList<>());
 		}
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -92,11 +92,11 @@ public class Blackjack extends Game implements TableGame {
 			default: return 10;
 		}
 	}
-	
+
 	/* TODO: Determine if there is a more efficient way to calculate a hand's
 	 * value and whether it's hard or soft than the next three methods.
 	 */
-	
+
 	/**
 	 * Determines the value of a hand for the purposes of the game, correctly
 	 * treating an ace as 11 points when a hand is soft.
@@ -106,7 +106,7 @@ public class Blackjack extends Game implements TableGame {
 	 */
 	private int getHandValue(LinkedList<Card> hand) {
 		int total = getHardHandValue(hand);
-		
+
 		if (total <= 11) {
 			for (int i = 0; i < hand.size(); i++) {
 				if (hand.get(i).getRank() == CardRank.ACE) {
@@ -115,10 +115,10 @@ public class Blackjack extends Game implements TableGame {
 				}
 			}
 		}
-		
+
 		return total;
 	}
-	
+
 	/**
 	 * Determines the value of a hand as if it were hard, i.e. always treating
 	 * an ace as 1 point.
@@ -128,13 +128,13 @@ public class Blackjack extends Game implements TableGame {
 	 */
 	private int getHardHandValue(LinkedList<Card> hand) {
 		int total = 0;
-		
+
 		for (int i = 0; i < hand.size(); i++)
 			total += getCardValue(hand.get(i));
-		
+
 		return total;
 	}
-	
+
 	/**
 	 * Determines whether the hand is a soft hand, i.e. has an ace that can
 	 * safely be counted as 11 points instead of 1 point.

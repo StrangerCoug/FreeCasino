@@ -33,5 +33,5 @@ package com.github.strangercoug.freecasino.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardSuit {
-    CLUBS, DIAMONDS, HEARTS, SPADES, BLACK, RED
+	CLUBS, DIAMONDS, HEARTS, SPADES, BLACK, RED
 }

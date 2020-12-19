@@ -44,5 +44,5 @@ public class KansasCityLoPoker extends DrawPoker {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 	}
-	
+
 }

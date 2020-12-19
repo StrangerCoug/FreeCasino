@@ -33,19 +33,19 @@ package com.github.strangercoug.freecasino.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Wheel {
-    private final Object[] stops;
-    private int position;
-    
-    public Wheel(Object[] stops) {
-        this.stops = stops;
-        position = 0;
-    }
-    
-    public Object getWheelResult() {
-        return stops[position];
-    }
-    
-    public void spinWheel() {
-        position = (int) (Math.random() * stops.length);
-    }
+	private final Object[] stops;
+	private int position;
+
+	public Wheel(Object[] stops) {
+		this.stops = stops;
+		position = 0;
+	}
+
+	public Object getWheelResult() {
+		return stops[position];
+	}
+
+	public void spinWheel() {
+		position = (int) (Math.random() * stops.length);
+	}
 }

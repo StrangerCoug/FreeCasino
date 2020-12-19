@@ -38,56 +38,56 @@ import java.math.RoundingMode;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Bet {
-    private final Player player;
-    private BigDecimal bet;
-    
-    public Bet (Player player, BigDecimal bet) {
-        this.player = player;
-        this.bet = bet;
-        bet.setScale(2, RoundingMode.HALF_EVEN);
-        player.subtractFunds(bet);
-    }
-    
-    public Player getPlayer() {
-        return player;
-    }
-    
-    public BigDecimal getBet() {
-        return bet;
-    }
-    
-    /**
-     * Adds an amount to an existing bet. To make a new bet that can be won or
-     * lost independently of an existing bet, create a new Bet object.
-     * 
-     * @param betAdded the amount to add to the bet 
-     */
-    public void increaseBet(BigDecimal betAdded) {
-        bet = bet.add(betAdded);
-        player.subtractFunds(betAdded);
-    }
-    
-    /**
-     * Subtracts an amount from an existing bet.
-     * 
-     * @param betRemoved the amount to subtract from the bet
-     */
-    public void decreaseBet(BigDecimal betRemoved) {
-        bet = bet.subtract(betRemoved);
-        player.subtractFunds(betRemoved);
-    }
-    
-    /**
-     * Returns how much a player wins with his or her bet, including the stake. This
-     * does not automatically add the winnings to the player's total; to do that,
-     * call Player.addFunds(Bet.awardBet(odds)).
-     * 
-     * @param odds the exact odds of the bet
-     * @return the amount the player won
-     */
-    
-    public BigDecimal awardBet(BigDecimal odds) {
-        BigDecimal winnings = bet.multiply(odds, MathContext.UNLIMITED);
-        return winnings.setScale(2, RoundingMode.HALF_EVEN);
-    }
+	private final Player player;
+	private BigDecimal bet;
+
+	public Bet (Player player, BigDecimal bet) {
+		this.player = player;
+		this.bet = bet;
+		bet.setScale(2, RoundingMode.HALF_EVEN);
+		player.subtractFunds(bet);
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public BigDecimal getBet() {
+		return bet;
+	}
+
+	/**
+	 * Adds an amount to an existing bet. To make a new bet that can be won or
+	 * lost independently of an existing bet, create a new Bet object.
+	 * 
+	 * @param betAdded the amount to add to the bet 
+	 */
+	public void increaseBet(BigDecimal betAdded) {
+		bet = bet.add(betAdded);
+		player.subtractFunds(betAdded);
+	}
+
+	/**
+	 * Subtracts an amount from an existing bet.
+	 * 
+	 * @param betRemoved the amount to subtract from the bet
+	 */
+	public void decreaseBet(BigDecimal betRemoved) {
+		bet = bet.subtract(betRemoved);
+		player.subtractFunds(betRemoved);
+	}
+
+	/**
+	 * Returns how much a player wins with his or her bet, including the stake. This
+	 * does not automatically add the winnings to the player's total; to do that,
+	 * call Player.addFunds(Bet.awardBet(odds)).
+	 * 
+	 * @param odds the exact odds of the bet
+	 * @return the amount the player won
+	 */
+
+	public BigDecimal awardBet(BigDecimal odds) {
+		BigDecimal winnings = bet.multiply(odds, MathContext.UNLIMITED);
+		return winnings.setScale(2, RoundingMode.HALF_EVEN);
+	}
 }

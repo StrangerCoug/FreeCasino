@@ -42,5 +42,5 @@ public class Keno extends Game {
 	public void play(ArrayList<Player> players) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-	
+
 }

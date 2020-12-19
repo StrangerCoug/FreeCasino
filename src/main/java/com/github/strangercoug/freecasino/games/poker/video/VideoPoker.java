@@ -69,6 +69,6 @@ public abstract class VideoPoker extends Poker implements ElectronicGame {
 		creditsIn = 0;
 		return ejectedCredits;
 	}
-	
+
 	public abstract int rowSelect(PokerHand hand);
 }

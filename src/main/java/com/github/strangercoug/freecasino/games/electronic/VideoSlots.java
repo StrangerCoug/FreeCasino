@@ -33,5 +33,5 @@ package com.github.strangercoug.freecasino.games.electronic;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class VideoSlots extends Slots {
-	
+
 }

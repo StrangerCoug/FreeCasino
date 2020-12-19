@@ -48,7 +48,7 @@ public class FreeCasino {
 		String entry;
 		Game game = null;
 		ArrayList<Player> players;
-		
+
 		while (true) {
 			do {
 				System.out.println("Select game to play or type \"QUIT\" to "
@@ -80,7 +80,7 @@ public class FreeCasino {
 					System.out.println("Invalid game number.");
 				}
 			} while (!validInput);
-			
+
 			validInput = false;
 			int numPlayers = 0;
 			do {
@@ -104,7 +104,7 @@ public class FreeCasino {
 				players.add(new Player(entry));
 			}
 			System.out.println("Good luck!");
-			
+
 			do {
 				game.play(players);
 				validInput = false;
@@ -128,7 +128,7 @@ public class FreeCasino {
 			} while (playAgain);
 		}
 	}
-	
+
 	private static Game returnGame(int i) {
 		switch (i) {
 			case 1: return new Baccarat();

@@ -48,11 +48,11 @@ public abstract class Roulette extends Game implements TableGame {
 	protected BigDecimal betMaximum;
 	protected Wheel wheel;
 	protected Stop result;
-	
+
 	protected enum Color {
 		GREEN, RED, BLACK
 	}
-	
+
 	/**
 	 * The stops of the roulette wheel. This will work for both American and
 	 * European roulette; the only difference is the use of the double zero and
@@ -79,25 +79,25 @@ public abstract class Roulette extends Game implements TableGame {
 		THIRTY_SIX("36", Color.RED);
 		private final String value;
 		private final Color color;
-		
+
 		private Stop(String value, Color color) {
 			this.value = value;
 			this.color = color;
 		}
-		
+
 		public String getValue() {
 			return value;
 		}
-		
+
 		public Color getColor() {
 			return color;
 		}
-		
+
 		public int getValueAsInt() {
 			return Integer.parseInt(value);
 		}
 	}
-	
+
 	/**
 	 * For legibility, this enum combines certain types of bets together that has
 	 * the same odds. For example, bets of 0-1-2, 0-00-2, and 0/00-2-3 are special
@@ -110,27 +110,27 @@ public abstract class Roulette extends Game implements TableGame {
 		STREET(new BigDecimal(12)), CORNER(new BigDecimal(9)),
 		BASKET(new BigDecimal(7)), DOUBLE_STREET(new BigDecimal(6)),
 		DOZEN(new BigDecimal(3)), HALF(new BigDecimal(2));
-		
+
 		/**
 		 * Because of the way {@code Bet.awardBet()} works; this field holds the
-	     * odds "for 1", not the odds "to 1" (i.e. "2 for 1" in lieu of "1 to 1").
+		 * odds "for 1", not the odds "to 1" (i.e. "2 for 1" in lieu of "1 to 1").
 		 */
 		private final BigDecimal odds;
-		
+
 		private betType(BigDecimal odds) {
 			this.odds = odds;
 		}
-		
+
 		public BigDecimal getOdds() {
 			return odds;
 		}
 	}
-	
+
 	@Override
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
-	
+
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
@@ -139,8 +139,8 @@ public abstract class Roulette extends Game implements TableGame {
 		this.betMaximum = betMaximum;
 		this.wheel = generateWheel();
 		this.result = Stop.ZERO; /* HACK: supposed to be wheel.getWheelResult(); but
-		                          * that currently throws a type error */
+								  * that currently throws a type error */
 	}
-	
+
 	public abstract Wheel generateWheel();
 }

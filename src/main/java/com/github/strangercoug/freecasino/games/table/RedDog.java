@@ -45,7 +45,7 @@ public class RedDog extends Game implements TableGame {
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
-	
+
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
@@ -53,5 +53,5 @@ public class RedDog extends Game implements TableGame {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 	}
-	
+
 }

@@ -41,7 +41,7 @@ public abstract class DrawPoker extends Poker implements TableGame {
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
-	
+
 	public abstract void play(ArrayList<Player> players, BigDecimal betMinimum,
 				BigDecimal betMaximum);
 }
