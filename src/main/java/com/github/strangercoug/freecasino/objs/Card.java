@@ -124,8 +124,8 @@ public class Card implements Comparable<Card> {
 			throw new NullPointerException();
 
 		return (this.suit.ordinal() * CardRank.values().length +
-				this.rank.ordinal()) - (other.getSuit().ordinal() *
-				CardRank.values().length + other.getRank().ordinal());
+		        this.rank.ordinal()) - (other.getSuit().ordinal() *
+		        CardRank.values().length + other.getRank().ordinal());
 	}
 
 	@Override

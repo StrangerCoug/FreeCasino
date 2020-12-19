@@ -60,11 +60,11 @@ public class Deck {
 
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-			CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-			CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
-			CardRank.KING, CardRank.ACE};
+		        CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
+		        CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
+		        CardRank.KING, CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
-			CardSuit.SPADES};
+		        CardSuit.SPADES};
 
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < 52; i++)

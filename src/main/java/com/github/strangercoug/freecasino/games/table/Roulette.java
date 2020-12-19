@@ -139,7 +139,7 @@ public abstract class Roulette extends Game implements TableGame {
 		this.betMaximum = betMaximum;
 		this.wheel = generateWheel();
 		this.result = Stop.ZERO; /* HACK: supposed to be wheel.getWheelResult(); but
-								  * that currently throws a type error */
+		                          * that currently throws a type error */
 	}
 
 	public abstract Wheel generateWheel();
