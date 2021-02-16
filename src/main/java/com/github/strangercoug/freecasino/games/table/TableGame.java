@@ -39,4 +39,6 @@ import java.util.ArrayList;
 public interface TableGame {
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum);
+
+	public boolean isValidBet(Player player, BigDecimal bet);
 }

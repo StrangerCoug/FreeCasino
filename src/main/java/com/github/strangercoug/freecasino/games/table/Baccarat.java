@@ -71,6 +71,13 @@ public class Baccarat extends Game implements TableGame {
 		deck = new Deck(8);
 	}
 
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
+
 	private void deal() {
 		for (int i = 0; i < 2; i++) {
 			playerHand.add(deck.dealCard());

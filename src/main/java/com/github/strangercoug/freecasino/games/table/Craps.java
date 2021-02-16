@@ -55,4 +55,10 @@ public class Craps extends Game implements TableGame {
 		this.betMaximum = betMaximum;
 	}
 
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
 }

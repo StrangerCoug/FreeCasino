@@ -142,5 +142,12 @@ public abstract class Roulette extends Game implements TableGame {
 		                          * that currently throws a type error */
 	}
 
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
+	
 	public abstract Wheel generateWheel();
 }

@@ -72,6 +72,13 @@ public class Blackjack extends Game implements TableGame {
 		}
 	}
 
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
+
 	/**
 	 * 
 	 * 

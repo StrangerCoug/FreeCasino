@@ -81,4 +81,11 @@ public class BigSix extends Game implements TableGame {
 
 		wheel = new Wheel(stops);
 	}
+
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
 }
