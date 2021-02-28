@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2020, Jeffrey Hope
+ * Copyright (c) 2018-2021, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,12 @@ public abstract class Roulette extends Game implements TableGame {
 
 	/**
 	 * The stops of the roulette wheel. This will work for both American and
-	 * European roulette; the only difference is the use of the double zero and
+	 * European roulette; the only difference is whether double zero is used and
 	 * the order of the stops.
+	 * 
+	 * The zeroes have special handling in this enum, see the
+	 * {@code AmericanRoulette} and {@code EuropeanRoulette} classes for
+	 * details.
 	 */
 	protected enum Stop {
 		ZERO("0", Color.GREEN), DOUBLE_ZERO("00", Color.GREEN),
@@ -95,6 +99,40 @@ public abstract class Roulette extends Game implements TableGame {
 
 		public int getValueAsInt() {
 			return Integer.parseInt(value);
+		}
+
+		/**
+		 * 
+		 * @return -1 if a zero space, 0 if even, 1 if odd
+		 */
+		public int getParity() {
+			if (color == Color.GREEN)
+				return -1;
+			return Integer.parseInt(value) % 2;
+		}
+
+		public int getColumn() {
+			if (color == Color.GREEN)
+				return -1;
+			return Integer.parseInt(value) % 3;
+		}
+
+		public int getDozen() {
+			if (color == Color.GREEN)
+				return -1;
+			return (Integer.parseInt(value) - 1) / 12;
+		}
+
+		public int getHalf() {
+			if (color == Color.GREEN)
+				return -1;
+			return (Integer.parseInt(value) - 1) / 18;	
+		}
+
+		public int getStreet() {
+			if (color == Color.GREEN)
+				return -1;
+			return (int)Math.ceil(Integer.parseInt(value) / 3.0) - 1;
 		}
 	}
 
