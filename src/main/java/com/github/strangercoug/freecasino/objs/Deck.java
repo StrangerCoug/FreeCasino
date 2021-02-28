@@ -98,4 +98,8 @@ public class Deck {
 	public Card dealCard() {
 		return cards.pop();
 	}
+
+	public boolean isEmpty() {
+		return cards.size() == 0;
+	}
 }
