@@ -32,7 +32,6 @@ import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.enums.CardSuit;
 
 import java.security.SecureRandom;
-import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -63,34 +62,34 @@ public class Deck {
 
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-		        CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-		        CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
-		        CardRank.KING, CardRank.ACE};
+				CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
+				CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
+				CardRank.KING, CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
-		        CardSuit.SPADES};
+				CardSuit.SPADES};
 
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < 52; i++)
 				cards.add(new Card(ranks[i/4], suits[i%4]));
 
 			if (USES_BLACK_JOKER)
-			    cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
+				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
 
 			if (USES_RED_JOKER)
-			    cards.add(new Card(CardRank.JOKER, CardSuit.RED));
+				cards.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}
 
 	/* TODO: This is fine for alpha and beta testing, but at a later point I
-	 * would like to be able to detect whether there is an Internet connection
-	 * and use the random.org API to shuffle if possible. If something goes
-	 * wrong, we fall back to this.
+	 * would like to be able to detect whether there is an Internet connection and
+	 * use the random.org API to shuffle if possible. If something goes wrong, we
+	 * fall back to this.
 	 */
 	public void shuffleDeck() {
 		for (int i = cards.size() - 1; i > 0; i--) {
 			Card temp = cards.get(i);
-			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo
-			                             * shuffle, which we don't want */
+			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo shuffle,
+			                             * which we don't want */
 			cards.set(i, cards.get(j));
 			cards.set(j, temp);
 		}
