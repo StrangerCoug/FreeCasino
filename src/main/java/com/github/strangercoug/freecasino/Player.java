@@ -71,7 +71,7 @@ public class Player {
 	}
 
 	public void subtractFunds(BigDecimal fundsDebited) {
-		if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) == -1)
+		if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) < 0)
 			throw new InsufficientFundsException();
 		funds = funds.subtract(fundsDebited);
 	}

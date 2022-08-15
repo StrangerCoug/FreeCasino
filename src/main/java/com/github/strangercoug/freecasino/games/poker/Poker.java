@@ -70,18 +70,18 @@ public abstract class Poker {
 	public boolean isFiveOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
-		switch (cardsPerRank[CardRank.JOKER.ordinal()]) {
-			case 1: return isFourOfAKind(hand);
-			case 2: return isThreeOfAKind(hand);
-			default: return false;
-		}
+		return switch (cardsPerRank[CardRank.JOKER.ordinal()]) {
+			case 1 -> isFourOfAKind(hand);
+			case 2 -> isThreeOfAKind(hand);
+			default -> false;
+		};
 	}
 
 	public boolean isFourOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
-		for (int i = 0; i < cardsPerRank.length; i++)
-			if (cardsPerRank[i] == 4)
+		for (int j : cardsPerRank)
+			if (j == 4)
 				return true;
 
 		return false;
@@ -98,8 +98,8 @@ public abstract class Poker {
 	public boolean isThreeOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
-		for (int i = 0; i < cardsPerRank.length; i++)
-			if (cardsPerRank[i] == 3)
+		for (int j : cardsPerRank)
+			if (j == 3)
 				return true;
 
 		return false;
@@ -108,8 +108,8 @@ public abstract class Poker {
 	public boolean isPair(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
-		for (int i = 0; i < cardsPerRank.length; i++)
-			if (cardsPerRank[i] == 2)
+		for (int j : cardsPerRank)
+			if (j == 2)
 				return true;
 
 		return false;

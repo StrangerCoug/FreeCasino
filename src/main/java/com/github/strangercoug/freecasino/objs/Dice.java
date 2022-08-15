@@ -33,7 +33,7 @@ package com.github.strangercoug.freecasino.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Dice {
-	private int[] dice;
+	private final int[] dice;
 	private final int SIDES;
 
 	/**

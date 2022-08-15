@@ -44,12 +44,7 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Blackjack extends Game implements TableGame {
-	private ArrayList<Player> players;
-	private BigDecimal betMinimum;
-	private BigDecimal betMaximum;
 	private Deck deck;
-	private LinkedList<LinkedList<Card>> playerHands;
-	private LinkedList<Card> dealerHand;
 	private HashSet<Bet> bets;
 
 	@Override
@@ -60,12 +55,9 @@ public class Blackjack extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
-		this.players = players;
-		this.betMinimum = betMinimum;
-		this.betMaximum = betMaximum;
 
-		playerHands = new LinkedList<>();
-		dealerHand = new LinkedList<>();
+		LinkedList<LinkedList<Card>> playerHands = new LinkedList<>();
+		LinkedList<Card> dealerHand = new LinkedList<>();
 
 		for (Player player : players) {
 			playerHands.add(new LinkedList<>());
@@ -79,18 +71,18 @@ public class Blackjack extends Game implements TableGame {
 	 * @return the card's value
 	 */
 	private int getCardValue(Card card) {
-		switch (card.getRank()) {
-			case ACE: return 1;
-			case TWO: return 2;
-			case THREE: return 3;
-			case FOUR: return 4;
-			case FIVE: return 5;
-			case SIX: return 6;
-			case SEVEN: return 7;
-			case EIGHT: return 8;
-			case NINE: return 9;
-			default: return 10;
-		}
+		return switch (card.getRank()) {
+			case ACE -> 1;
+			case TWO -> 2;
+			case THREE -> 3;
+			case FOUR -> 4;
+			case FIVE -> 5;
+			case SIX -> 6;
+			case SEVEN -> 7;
+			case EIGHT -> 8;
+			case NINE -> 9;
+			default -> 10;
+		};
 	}
 
 	/* TODO: Determine if there is a more efficient way to calculate a hand's
@@ -108,8 +100,8 @@ public class Blackjack extends Game implements TableGame {
 		int total = getHardHandValue(hand);
 
 		if (total <= 11) {
-			for (int i = 0; i < hand.size(); i++) {
-				if (hand.get(i).getRank() == CardRank.ACE) {
+			for (Card card : hand) {
+				if (card.getRank() == CardRank.ACE) {
 					total += 10;
 					break;
 				}
@@ -129,8 +121,7 @@ public class Blackjack extends Game implements TableGame {
 	private int getHardHandValue(LinkedList<Card> hand) {
 		int total = 0;
 
-		for (int i = 0; i < hand.size(); i++)
-			total += getCardValue(hand.get(i));
+		for (Card card : hand) total += getCardValue(card);
 
 		return total;
 	}

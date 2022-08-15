@@ -50,9 +50,6 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Baccarat extends Game implements TableGame {
-	private ArrayList<Player> players;
-	private BigDecimal betMinimum;
-	private BigDecimal betMaximum;
 	private Deck deck;
 	private LinkedList<Card> playerHand, bankerHand;
 	private HashSet<Bet> playerBets, bankerBets, tieBets;
@@ -65,9 +62,6 @@ public class Baccarat extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
-		this.players = players;
-		this.betMinimum = betMinimum;
-		this.betMaximum = betMaximum;
 		deck = new Deck(8);
 	}
 
@@ -94,18 +88,18 @@ public class Baccarat extends Game implements TableGame {
 	 * @return the card's value
 	 */
 	private int getCardValue(Card card) {
-		switch (card.getRank()) {
-			case ACE: return 1;
-			case TWO: return 2;
-			case THREE: return 3;
-			case FOUR: return 4;
-			case FIVE: return 5;
-			case SIX: return 6;
-			case SEVEN: return 7;
-			case EIGHT: return 8;
-			case NINE: return 9;
-			default: return 0;
-		}
+		return switch (card.getRank()) {
+			case ACE -> 1;
+			case TWO -> 2;
+			case THREE -> 3;
+			case FOUR -> 4;
+			case FIVE -> 5;
+			case SIX -> 6;
+			case SEVEN -> 7;
+			case EIGHT -> 8;
+			case NINE -> 9;
+			default -> 0;
+		};
 	}
 
 	/**
@@ -117,8 +111,7 @@ public class Baccarat extends Game implements TableGame {
 	private int getHandValue(LinkedList<Card> hand) {
 		int total = 0;
 
-		for (int i = 0; i < hand.size(); i++)
-			total += getCardValue(hand.get(i));
+		for (Card card : hand) total += getCardValue(card);
 
 		return total % 10;
 	}

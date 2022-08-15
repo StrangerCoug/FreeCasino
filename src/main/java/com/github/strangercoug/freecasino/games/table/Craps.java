@@ -38,9 +38,6 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Craps extends Game implements TableGame {
-	private ArrayList<Player> players;
-	private BigDecimal betMinimum;
-	private BigDecimal betMaximum;
 
 	@Override
 	public void play(ArrayList<Player> players) {
@@ -50,9 +47,6 @@ public class Craps extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
-		this.players = players;
-		this.betMinimum = betMinimum;
-		this.betMaximum = betMaximum;
 	}
 
 }
