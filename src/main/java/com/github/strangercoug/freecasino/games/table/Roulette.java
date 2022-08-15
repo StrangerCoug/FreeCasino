@@ -80,7 +80,7 @@ public abstract class Roulette extends Game implements TableGame {
 		private final String value;
 		private final Color color;
 
-		private Stop(String value, Color color) {
+		Stop(String value, Color color) {
 			this.value = value;
 			this.color = color;
 		}
@@ -117,7 +117,7 @@ public abstract class Roulette extends Game implements TableGame {
 		 */
 		private final BigDecimal odds;
 
-		private betType(BigDecimal odds) {
+		betType(BigDecimal odds) {
 			this.odds = odds;
 		}
 

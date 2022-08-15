@@ -42,14 +42,14 @@ public class BigSix extends Game implements TableGame {
 		ONE(1), TWO(2), FIVE(5), TEN(10), TWENTY(20), JOKER(40), LOGO(40);
 		private final int value;
 
-		private Stop(int value) {
+		Stop(int value) {
 			this.value = value;
 		}
 
 		public int getValue() {
 			return value;
 		}
-	};
+	}
 
 	@Override
 	public void play(ArrayList<Player> players) {
