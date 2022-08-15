@@ -30,10 +30,10 @@ package com.github.strangercoug.freecasino.enums;
 
 /**
  * I originally wrote this enum for a Deuces Wild minigame for Telnaior's
- * Race to a Billion bot at https://github.com/Telnaior/RtaB-Bot. It is expanded
+ * Race to a Billion bot at <a href="https://github.com/Telnaior/RtaB-Bot">...</a>. It is expanded
  * here to allow for a wider variety of hands to be recognized. Some of these
  * hands are still meant only for video poker.
- * 
+ *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 
