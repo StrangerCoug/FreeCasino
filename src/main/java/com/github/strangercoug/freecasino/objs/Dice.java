@@ -50,7 +50,7 @@ public class Dice {
 	/**
 	 * Creates a number of six-sided dice.
 	 * 
-	 * @param number 
+	 * @param number the number of dice to create
 	 */
 	public Dice(int number) {
 		this(number, 6);
