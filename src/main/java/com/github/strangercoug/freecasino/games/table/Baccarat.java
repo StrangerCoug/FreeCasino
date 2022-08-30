@@ -43,16 +43,17 @@ import java.util.ArrayList;
  * The class for a baccarat (more specifically, punto banco) game. The game
  * logic is designed not to care about at how big of a table the game is played;
  * therefore, it considers standard baccarat, midi baccarat, and mini baccarat
- * the same game. Which is which is to be determined by checking the length of
- * the player array passed to it (usually 14 but sometimes 12 for the standard
- * game, 9 for midi, and 7 for mini).
+ * the same game. Determine which is which by checking the length of the player
+ * array passed to it (usually 14 but sometimes 12 for the standard game, 9 for
+ * midi, and 7 for mini).
  * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Baccarat extends Game implements TableGame {
 	private Deck deck;
 	private LinkedList<Card> playerHand, bankerHand;
-	private HashSet<Bet> playerBets, bankerBets, tieBets;
+	private HashSet<Bet> playerBets, bankerBets, tieBets, playerPairBets,
+			bankerPairBets;
 
 	@Override
 	public void play(ArrayList<Player> players) {
@@ -119,6 +120,10 @@ public class Baccarat extends Game implements TableGame {
 	private boolean isNatural(LinkedList<Card> hand) {
 		return hand.size() == 2 && (getHandValue(hand) == 8 ||
 				getHandValue(hand) == 9);
+	}
+
+	private boolean isPair(LinkedList<Card> hand) {
+		return hand.get(0).getRank() == hand.get(1).getRank();
 	}
 
 	private LinkedList<Card> determineWinningHand(LinkedList<Card> playerHand,
