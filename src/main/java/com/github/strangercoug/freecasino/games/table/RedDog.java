@@ -38,6 +38,9 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class RedDog extends Game implements TableGame {
+	private ArrayList<Player> players;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
 
 	public void play(ArrayList<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
