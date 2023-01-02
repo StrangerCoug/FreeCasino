@@ -121,7 +121,6 @@ public class FreeCasino {
 							playAgain = false;
 						}
 						default -> {
-							validInput = false;
 							System.out.println("Invalid selection.");
 						}
 					}
