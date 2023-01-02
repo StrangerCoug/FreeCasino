@@ -40,5 +40,5 @@ public interface TableGame {
 	void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum);
 
-	public boolean isValidBet(Player player, BigDecimal bet);
+	boolean isValidBet(Player player, BigDecimal bet);
 }
