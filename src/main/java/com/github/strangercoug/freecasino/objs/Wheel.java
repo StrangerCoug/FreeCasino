@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2020, Jeffrey Hope
+ * Copyright (c) 2018-2021, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
+import java.security.SecureRandom;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
@@ -35,6 +37,7 @@ package com.github.strangercoug.freecasino.objs;
 public class Wheel {
 	private final Object[] stops;
 	private int position;
+	private final SecureRandom rng = new SecureRandom();
 
 	public Wheel(Object[] stops) {
 		this.stops = stops;
@@ -46,6 +49,6 @@ public class Wheel {
 	}
 
 	public void spinWheel() {
-		position = (int) (Math.random() * stops.length);
+		position = rng.nextInt(stops.length);
 	}
 }

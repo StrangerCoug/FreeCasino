@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,8 @@ package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.enums.CardSuit;
-import java.util.Collections;
+
+import java.security.SecureRandom;
 import java.util.LinkedList;
 
 /**
@@ -38,13 +39,14 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected final LinkedList<Card> deck;
+	protected final LinkedList<Card> cards;
 	protected final int NUM_DECKS;
 	private final boolean USES_BLACK_JOKER;
 	private final boolean USES_RED_JOKER;
+	private final SecureRandom rng = new SecureRandom();
 
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
-		deck = new LinkedList<>();
+		cards = new LinkedList<>();
 		NUM_DECKS = numDecks;
 		USES_BLACK_JOKER = usesBlackJoker;
 		USES_RED_JOKER = usesRedJoker;
@@ -60,34 +62,44 @@ public class Deck {
 
 	public void populateDeck() {
 		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-		        CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-		        CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
-		        CardRank.KING, CardRank.ACE};
+				CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
+				CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
+				CardRank.KING, CardRank.ACE};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
-		        CardSuit.SPADES};
+				CardSuit.SPADES};
 
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				deck.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[i/4], suits[i%4]));
 
 			if (USES_BLACK_JOKER)
-				deck.add(new Card(CardRank.JOKER, CardSuit.BLACK));
+				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
 
 			if (USES_RED_JOKER)
-				deck.add(new Card(CardRank.JOKER, CardSuit.RED));
+				cards.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}
 
 	/* TODO: This is fine for alpha and beta testing, but at a later point I
-	 * would like to be able to detect whether there is an Internet connection
-	 * and use the random.org API to shuffle if possible. If something goes
-	 * wrong, we fall back to this.
+	 * would like to be able to detect whether there is an Internet connection and
+	 * use the random.org API to shuffle if possible. If something goes wrong, we
+	 * fall back to this.
 	 */
 	public void shuffleDeck() {
-		Collections.shuffle(deck);
+		for (int i = cards.size() - 1; i > 0; i--) {
+			Card temp = cards.get(i);
+			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo shuffle,
+			                             * which we don't want */
+			cards.set(i, cards.get(j));
+			cards.set(j, temp);
+		}
 	}
 
 	public Card dealCard() {
-		return deck.pop();
+		return cards.pop();
+	}
+
+	public boolean isEmpty() {
+		return cards.size() == 0;
 	}
 }

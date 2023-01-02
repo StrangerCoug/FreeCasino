@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,6 +43,9 @@ import java.util.HashSet;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Craps extends Game implements TableGame {
+	private ArrayList<Player> players;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
 	private Dice dice;
 	private HashSet<Bet> bets;
 	private boolean isComeOutRoll;
@@ -205,6 +208,13 @@ public class Craps extends Game implements TableGame {
 			BigDecimal betMaximum) {
 		dice = new Dice();
 		isComeOutRoll = true;
+	}
+
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
 	}
 
 	/**

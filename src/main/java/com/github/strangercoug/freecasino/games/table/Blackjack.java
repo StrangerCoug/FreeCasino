@@ -44,7 +44,12 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Blackjack extends Game implements TableGame {
+	private ArrayList<Player> players;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
 	private Deck deck;
+	private LinkedList<BlackjackHand> playerHands;
+	private LinkedList<Card> dealerHand;
 	private HashSet<Bet> bets;
 
 	@Override
@@ -55,6 +60,10 @@ public class Blackjack extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
+		this.players = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
+
 		/* TODO: This is just for testing purposes; there should be an option to
 		 * control this. Ideally, we'd want to read from an option file.
 		 */
@@ -63,8 +72,18 @@ public class Blackjack extends Game implements TableGame {
 		LinkedList<BlackjackHand> playerHands = new LinkedList<>();
 		BlackjackHand dealerHand = new BlackjackHand();
 
+		playerHands = new LinkedList<>();
+		dealerHand = new BlackjackHand();
+
 		for (Player player : players) {
 			playerHands.add(new BlackjackHand());
 		}
+	}
+
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
 	}
 }

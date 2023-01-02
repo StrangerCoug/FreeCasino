@@ -34,9 +34,7 @@ import com.github.strangercoug.freecasino.objs.BaccaratHand;
 import com.github.strangercoug.freecasino.objs.Bet;
 import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.LinkedList;
 import com.github.strangercoug.freecasino.enums.Action;
-import com.github.strangercoug.freecasino.objs.Card;
 import com.github.strangercoug.freecasino.objs.Deck;
 import java.util.ArrayList;
 
@@ -51,10 +49,12 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Baccarat extends Game implements TableGame {
+	private ArrayList<Player> players;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
 	private Deck deck;
 	private BaccaratHand playerHand, bankerHand;
-	private HashSet<Bet> playerBets, bankerBets, tieBets, playerPairBets,
-			bankerPairBets;
+	private HashSet<Bet> playerBets, bankerBets, tieBets;
 
 	@Override
 	public void play(ArrayList<Player> players) {
@@ -64,7 +64,17 @@ public class Baccarat extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
+		this.players = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
 		deck = new Deck(8);
+	}
+
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
 	}
 
 	private void deal() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2021, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,4 +44,11 @@ public abstract class CommunityCardPoker extends Poker implements TableGame {
 
 	public abstract void play(ArrayList<Player> players, BigDecimal betMinimum,
 				BigDecimal betMaximum);
+	
+	@Override
+	public boolean isValidBet(Player player, BigDecimal bet) {
+		return (bet.compareTo(player.getFunds()) < 1
+				&& bet.compareTo(betMaximum) < 1
+				&& bet.compareTo(betMinimum) > -1);
+	}
 }
