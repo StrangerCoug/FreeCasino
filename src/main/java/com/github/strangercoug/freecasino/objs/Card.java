@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,6 +63,25 @@ public class Card implements Comparable<Card> {
 
 	public CardSuit getSuit() {
 		return suit;
+	}
+
+	/**
+	 * This method is intended only for baccarat and variants of twenty-one. Use {@code getRank()} if the tens and face
+	 * cards should have different values.
+	 */
+	public int getPointValue() {
+		return switch (rank) {
+			case ACE -> 1;
+			case TWO -> 2;
+			case THREE -> 3;
+			case FOUR -> 4;
+			case FIVE -> 5;
+			case SIX -> 6;
+			case SEVEN -> 7;
+			case EIGHT -> 8;
+			case NINE -> 9;
+			default -> 10;
+		};
 	}
 
 	/**

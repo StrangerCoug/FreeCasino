@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,29 +39,49 @@ import java.math.RoundingMode;
  */
 public class Player {
 	private final String name;
+	private final boolean isHuman;
 	private BigDecimal funds;
 
-	public Player(String name, BigDecimal funds) {
+	public Player(String name, boolean isHuman, BigDecimal funds) {
 		this.name = name;
+		this.isHuman = isHuman;
 		this.funds = funds.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
+	public Player() {
+		this("Anonymous", true, new BigDecimal(1000, MathContext.DECIMAL64));
+	}
 	public Player(String name) {
-		this(name, new BigDecimal(1000, MathContext.DECIMAL64));
+		this(name, true, new BigDecimal(1000, MathContext.DECIMAL64));
+	}
+
+	public Player(boolean isHuman) {
+		this("Anonymous", isHuman, new BigDecimal(1000, MathContext.DECIMAL64));
 	}
 
 	public Player(BigDecimal funds) {
-		this("Anonymous", funds);
+		this("Anonymous", true, funds);
 	}
 
-	public Player() {
-		this("Anonymous", new BigDecimal(1000, MathContext.DECIMAL64));
+	public Player(String name, boolean isHuman) {
+		this(name, isHuman, new BigDecimal(1000, MathContext.DECIMAL64));
+	}
+
+	public Player(String name, BigDecimal funds) {
+		this(name, true, funds);
+	}
+
+	public Player(boolean isHuman, BigDecimal funds) {
+		this("Anonymous", isHuman, funds);
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public boolean isHuman() {
+		return isHuman;
+	}
 	public BigDecimal getFunds() {
 		return funds;
 	}

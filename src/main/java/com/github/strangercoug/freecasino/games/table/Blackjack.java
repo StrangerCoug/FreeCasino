@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,8 +30,8 @@ package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
 import com.github.strangercoug.freecasino.Player;
-import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.objs.Bet;
+import com.github.strangercoug.freecasino.objs.BlackjackHand;
 import com.github.strangercoug.freecasino.objs.Card;
 import com.github.strangercoug.freecasino.objs.Deck;
 import java.math.BigDecimal;
@@ -55,85 +55,16 @@ public class Blackjack extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
-
-		LinkedList<LinkedList<Card>> playerHands = new LinkedList<>();
-		LinkedList<Card> dealerHand = new LinkedList<>();
+		/* TODO: This is just for testing purposes; there should be an option to
+		 * control this. Ideally, we'd want to read from an option file.
+		 */
+		deck = new Deck(6);
+		bets = new HashSet<>(players.size());
+		LinkedList<BlackjackHand> playerHands = new LinkedList<>();
+		BlackjackHand dealerHand = new BlackjackHand();
 
 		for (Player player : players) {
-			playerHands.add(new LinkedList<>());
+			playerHands.add(new BlackjackHand());
 		}
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param card the card whose value is being checked
-	 * @return the card's value
-	 */
-	private int getCardValue(Card card) {
-		return switch (card.getRank()) {
-			case ACE -> 1;
-			case TWO -> 2;
-			case THREE -> 3;
-			case FOUR -> 4;
-			case FIVE -> 5;
-			case SIX -> 6;
-			case SEVEN -> 7;
-			case EIGHT -> 8;
-			case NINE -> 9;
-			default -> 10;
-		};
-	}
-
-	/* TODO: Determine if there is a more efficient way to calculate a hand's
-	 * value and whether it's hard or soft than the next three methods.
-	 */
-
-	/**
-	 * Determines the value of a hand for the purposes of the game, correctly
-	 * treating an ace as 11 points when a hand is soft.
-	 * 
-	 * @param hand the hand whose value is being checked
-	 * @return the hand's value
-	 */
-	private int getHandValue(LinkedList<Card> hand) {
-		int total = getHardHandValue(hand);
-
-		if (total <= 11) {
-			for (Card card : hand) {
-				if (card.getRank() == CardRank.ACE) {
-					total += 10;
-					break;
-				}
-			}
-		}
-
-		return total;
-	}
-
-	/**
-	 * Determines the value of a hand as if it were hard, i.e. always treating
-	 * an ace as 1 point.
-	 * 
-	 * @param hand the hand whose value is being checked
-	 * @return the hand's value
-	 */
-	private int getHardHandValue(LinkedList<Card> hand) {
-		int total = 0;
-
-		for (Card card : hand) total += getCardValue(card);
-
-		return total;
-	}
-
-	/**
-	 * Determines whether the hand is a soft hand, i.e. has an ace that can
-	 * safely be counted as 11 points instead of 1 point.
-	 * 
-	 * @param hand the hand being checked
-	 * @return true if the hand is soft, false otherwise
-	 */
-	private boolean isHandSoft(LinkedList<Card> hand) {
-		return getHandValue(hand) == getHardHandValue(hand) + 10;
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,23 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino.games.poker.video;
+package com.github.strangercoug.freecasino.objs;
 
-import com.github.strangercoug.freecasino.enums.PokerRank;
+import com.github.strangercoug.freecasino.enums.Action;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-public class JacksOrBetterPoker extends VideoPoker {
+public interface BlackjackBot {
+	/**
+	 * Whether and under what circumstances to take insurance.
+	 */
+	boolean takeInsurance();
 
-	@Override
-	public int rowSelect(PokerRank hand) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
+	/**
+	 * The strategy the bot takes.
+	 *
+	 * @param hand the player's hand
+	 * @param upcard the dealer's upcard
+	 * @param canAffordDoubleOrSplit whether the bot has enough funds to make another bet
+	 * @return the action the bot should take
+	 */
+	Action getAction(BlackjackHand hand, Card upcard, boolean canAffordDoubleOrSplit);
 }

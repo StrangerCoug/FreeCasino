@@ -28,7 +28,7 @@
  */
 package com.github.strangercoug.freecasino.games.poker.video;
 
-import com.github.strangercoug.freecasino.enums.PokerHand;
+import com.github.strangercoug.freecasino.enums.PokerRank;
 import com.github.strangercoug.freecasino.games.poker.Poker;
 import com.github.strangercoug.freecasino.games.electronic.ElectronicGame;
 import com.github.strangercoug.freecasino.objs.Card;
@@ -70,5 +70,5 @@ public abstract class VideoPoker extends Poker implements ElectronicGame {
 		return ejectedCredits;
 	}
 
-	public abstract int rowSelect(PokerHand hand);
+	public abstract int rowSelect(PokerRank hand);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Game;
 import com.github.strangercoug.freecasino.Player;
+import com.github.strangercoug.freecasino.objs.BaccaratHand;
 import com.github.strangercoug.freecasino.objs.Bet;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -51,7 +52,7 @@ import java.util.ArrayList;
  */
 public class Baccarat extends Game implements TableGame {
 	private Deck deck;
-	private LinkedList<Card> playerHand, bankerHand;
+	private BaccaratHand playerHand, bankerHand;
 	private HashSet<Bet> playerBets, bankerBets, tieBets, playerPairBets,
 			bankerPairBets;
 
@@ -68,69 +69,25 @@ public class Baccarat extends Game implements TableGame {
 
 	private void deal() {
 		for (int i = 0; i < 2; i++) {
-			playerHand.add(deck.dealCard());
-			bankerHand.add(deck.dealCard());
+			playerHand.dealToHand(deck.dealCard());
+			bankerHand.dealToHand(deck.dealCard());
 		}
 
-		if (isNatural(playerHand) || isNatural(bankerHand))
+		if (playerHand.isNatural() || bankerHand.isNatural())
 			return;
 
 		if (getPlayerAction(playerHand) == Action.HIT)
-			playerHand.add(deck.dealCard());
+			playerHand.dealToHand(deck.dealCard());
 
 		if (getBankerAction(playerHand, bankerHand) == Action.HIT)
-			bankerHand.add(deck.dealCard());
+			bankerHand.dealToHand(deck.dealCard());
 	}
 
-	/**
-	 * 
-	 * 
-	 * @param card the card whose value is being checked
-	 * @return the card's value
-	 */
-	private int getCardValue(Card card) {
-		return switch (card.getRank()) {
-			case ACE -> 1;
-			case TWO -> 2;
-			case THREE -> 3;
-			case FOUR -> 4;
-			case FIVE -> 5;
-			case SIX -> 6;
-			case SEVEN -> 7;
-			case EIGHT -> 8;
-			case NINE -> 9;
-			default -> 0;
-		};
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param hand the hand whose value is being checked
-	 * @return the hand's value
-	 */
-	private int getHandValue(LinkedList<Card> hand) {
-		int total = 0;
-
-		for (Card card : hand) total += getCardValue(card);
-
-		return total % 10;
-	}
-
-	private boolean isNatural(LinkedList<Card> hand) {
-		return hand.size() == 2 && (getHandValue(hand) == 8 ||
-				getHandValue(hand) == 9);
-	}
-
-	private boolean isPair(LinkedList<Card> hand) {
-		return hand.get(0).getRank() == hand.get(1).getRank();
-	}
-
-	private LinkedList<Card> determineWinningHand(LinkedList<Card> playerHand,
-			LinkedList<Card> bankerHand) {
-		if (getHandValue(playerHand) < getHandValue(bankerHand))
+	private BaccaratHand determineWinningHand(BaccaratHand playerHand,
+	                                          BaccaratHand bankerHand) {
+		if (playerHand.getHandValue() < bankerHand.getHandValue())
 			return bankerHand;
-		if (getHandValue(playerHand) > getHandValue(bankerHand))
+		if (playerHand.getHandValue() > bankerHand.getHandValue())
 			return playerHand;
 		return null; // as an indicator of a tie
 	}
@@ -140,8 +97,8 @@ public class Baccarat extends Game implements TableGame {
 	 * @param playerHand the player's hand
 	 * @return the action the player should take
 	 */
-	private Action getPlayerAction(LinkedList<Card> playerHand) {
-		if (getHandValue(playerHand) >= 5)
+	private Action getPlayerAction(BaccaratHand playerHand) {
+		if (playerHand.getHandValue() >= 5)
 			return Action.HIT;
 		else return Action.STAND;
 	}
@@ -153,12 +110,12 @@ public class Baccarat extends Game implements TableGame {
 	 * @param playerHand the player's hand
 	 * @return the action the banker should take
 	 */
-	private Action getBankerAction(LinkedList<Card> playerHand, LinkedList<Card>
-			bankerHand) {
-		if (playerHand.size() == 2) // that is, if player stood
+	private Action getBankerAction(BaccaratHand playerHand,
+	                               BaccaratHand bankerHand) {
+		if (playerHand.getCardHand().size() == 2) // that is, if player stood
 			return getPlayerAction(bankerHand);
 		else {
-			int thirdCardValue = getCardValue(playerHand.get(2));
+			int thirdCardValue = playerHand.getCardHand().get(2).getPointValue() % 10;
 
 			/* This is actually a clever way to determine the correct banker
 			 * action if the player drew to limit the number of comparisons to
@@ -169,7 +126,7 @@ public class Baccarat extends Game implements TableGame {
 
 			int bankerGoal = thirdCardValue / 2 + 3;
 
-			if (getHandValue(bankerHand) <= bankerGoal)
+			if (bankerHand.getHandValue() <= bankerGoal)
 				return Action.HIT;
 			else return Action.STAND;
 		}

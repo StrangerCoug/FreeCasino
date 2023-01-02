@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2020, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ package com.github.strangercoug.freecasino.enums;
  */
 
 // TODO: Decide how to handle names that should differ depending on the game.
-public enum PokerHand {
+public enum PokerRank {
 	NOTHING("Nothing"), // couldn't think of any other good name
 	ONE_PAIR("One Pair"),
 	TENS_OR_BETTER("Tens or Better"),
@@ -64,7 +64,7 @@ public enum PokerHand {
 
 	private final String name;
 
-	PokerHand (String name){
+	PokerRank(String name){
 		this.name = name;
 	}
 

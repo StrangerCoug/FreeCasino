@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jeffrey Hope
+ * Copyright (c) 2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino.games.poker.video;
+package com.github.strangercoug.freecasino.objs;
 
-import com.github.strangercoug.freecasino.enums.PokerRank;
+public class BaccaratHand extends CardHand {
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-public class JacksOrBetterPoker extends VideoPoker {
+	public int getHandValue() {
+		int total = 0;
 
-	@Override
-	public int rowSelect(PokerRank hand) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		for (Card card : hand) total += card.getPointValue();
+
+		return total % 10;
 	}
 
+	public boolean isNatural() {
+		return hand.size() == 2 && (getHandValue() == 8 ||
+				getHandValue() == 9);
+	}
+
+	public boolean isPair() {
+		return hand.get(0).getRank() == hand.get(1).getRank();
+	}
 }
