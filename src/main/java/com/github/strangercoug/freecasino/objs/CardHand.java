@@ -32,7 +32,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public abstract class CardHand {
-	LinkedList<Card> hand;
+	final LinkedList<Card> hand;
 
 	protected CardHand() {
 		hand = new LinkedList<>();

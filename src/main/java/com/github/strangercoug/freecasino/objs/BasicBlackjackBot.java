@@ -48,8 +48,8 @@ public class BasicBlackjackBot extends Player implements BlackjackBot {
 	}
 
 	private Action getPairStrategy(BlackjackHand hand, Card upcard) {
-		/**
-		 * Rows are the rank of the pair; columns are the rank of the upcard.
+		/*
+		  Rows are the rank of the pair; columns are the rank of the upcard.
 		 */
 		boolean[][] shouldSplit =
 				//  A      2      3      4      5      6      7      8      9     10
@@ -74,8 +74,8 @@ public class BasicBlackjackBot extends Player implements BlackjackBot {
 
 	private Action getSoftStrategy(BlackjackHand hand, Card upcard, boolean canAffordDoubleOrSplit) {
 		if (hand.getValue() >= 18) {
-			/**
-			 * Rows are the rank of the pair; columns are the rank of the upcard.
+			/*
+			  Rows are the rank of the pair; columns are the rank of the upcard.
 			 */
 			boolean[][] shouldDouble =
 					//  A      2      3      4      5      6      7      8      9     10
