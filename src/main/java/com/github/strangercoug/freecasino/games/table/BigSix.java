@@ -42,19 +42,14 @@ public class BigSix extends Game implements TableGame {
 		ONE(1), TWO(2), FIVE(5), TEN(10), TWENTY(20), JOKER(40), LOGO(40);
 		private final int value;
 
-		private Stop(int value) {
+		Stop(int value) {
 			this.value = value;
 		}
 
 		public int getValue() {
 			return value;
 		}
-	};
-
-	private ArrayList<Player> players;
-	private BigDecimal betMinimum;
-	private BigDecimal betMaximum;
-	private Wheel wheel;
+	}
 
 	@Override
 	public void play(ArrayList<Player> players) {
@@ -64,9 +59,6 @@ public class BigSix extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
-		this.players = players;
-		this.betMinimum = betMinimum;
-		this.betMaximum = betMaximum;
 
 		Stop[] stops = {Stop.LOGO, Stop.TWO, Stop.ONE, Stop.TWO, Stop.ONE, 
 				Stop.TWO, Stop.ONE, Stop.TEN, Stop.ONE, Stop.FIVE, Stop.ONE,
@@ -79,7 +71,7 @@ public class BigSix extends Game implements TableGame {
 				Stop.TEN, Stop.ONE, Stop.TWO, Stop.FIVE, Stop.ONE, Stop.TWO,
 				Stop.ONE};
 
-		wheel = new Wheel(stops);
+		Wheel wheel = new Wheel(stops);
 	}
 
 	@Override

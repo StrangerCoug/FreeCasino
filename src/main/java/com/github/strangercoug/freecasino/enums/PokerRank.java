@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,15 +30,15 @@ package com.github.strangercoug.freecasino.enums;
 
 /**
  * I originally wrote this enum for a Deuces Wild minigame for Telnaior's
- * Race to a Billion bot at https://github.com/Telnaior/RtaB-Bot. It is expanded
+ * Race to a Billion bot at <a href="https://github.com/Telnaior/RtaB-Bot">...</a>. It is expanded
  * here to allow for a wider variety of hands to be recognized. Some of these
  * hands are still meant only for video poker.
- * 
+ *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 
 // TODO: Decide how to handle names that should differ depending on the game.
-public enum PokerHand {
+public enum PokerRank {
 	NOTHING("Nothing"), // couldn't think of any other good name
 	ONE_PAIR("One Pair"),
 	TENS_OR_BETTER("Tens or Better"),
@@ -64,7 +64,7 @@ public enum PokerHand {
 
 	private final String name;
 
-	PokerHand (String name){
+	PokerRank(String name){
 		this.name = name;
 	}
 

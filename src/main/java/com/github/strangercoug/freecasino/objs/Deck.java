@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021, Jeffrey Hope
+ * Copyright (c) 2018-2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected LinkedList<Card> cards;
+	protected final LinkedList<Card> cards;
 	protected final int NUM_DECKS;
 	private final boolean USES_BLACK_JOKER;
 	private final boolean USES_RED_JOKER;
@@ -69,7 +69,7 @@ public class Deck {
 				CardSuit.SPADES};
 
 		for (int i = 0; i < NUM_DECKS; i++) {
-			for (int j = 0; j < 52; i++)
+			for (int j = 0; j < ranks.length * suits.length; j++)
 				cards.add(new Card(ranks[i/4], suits[i%4]));
 
 			if (USES_BLACK_JOKER)

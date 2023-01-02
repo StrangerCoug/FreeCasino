@@ -33,7 +33,7 @@ package com.github.strangercoug.freecasino.objs;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Dice {
-	private int[] dice;
+	private final int[] dice;
 	private final int SIDES;
 
 	/**
@@ -50,7 +50,7 @@ public class Dice {
 	/**
 	 * Creates a number of six-sided dice.
 	 * 
-	 * @param number 
+	 * @param number the number of dice to create
 	 */
 	public Dice(int number) {
 		this(number, 6);

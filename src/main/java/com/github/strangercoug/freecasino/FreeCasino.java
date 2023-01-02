@@ -51,17 +51,17 @@ public class FreeCasino {
 
 		while (true) {
 			do {
-				System.out.println("Select game to play or type \"QUIT\" to "
-						+" quit:\n"
-						+ "1. Baccarat\n"
-						+ "2. Big Six\n"
-						+ "3. Blackjack\n"
-						+ "4. Craps\n"
-						+ "5. Keno\n"
-						+ "6. Poker\n"
-						+ "7. Red Dog\n"
-						+ "8. Roulette\n"
-						+ "9. Video Poker");
+				System.out.println("""
+						Select game to play or type "QUIT" to  quit:
+						1. Baccarat
+						2. Big Six
+						3. Blackjack
+						4. Craps
+						5. Keno
+						6. Poker
+						7. Red Dog
+						8. Roulette
+						9. Video Poker""");
 				entry = input.nextLine();
 				if (entry.equalsIgnoreCase("quit")) {
 					input.close();
@@ -97,7 +97,7 @@ public class FreeCasino {
 					System.out.print("Invalid input.");
 				}
 			} while (numPlayers < 1);
-			players = new ArrayList<Player>(numPlayers);
+			players = new ArrayList<>(numPlayers);
 			for (int i = 1; i <= numPlayers; i++) {
 				System.out.print("Enter name of player #" + i + ": ");
 				entry = input.nextLine();
@@ -112,17 +112,18 @@ public class FreeCasino {
 					System.out.print("Play again? (Y/N): ");
 					char selection = input.nextLine().charAt(0);
 					switch (selection) {
-						case 'Y': case 'y':
+						case 'Y', 'y' -> {
 							validInput = true;
 							playAgain = true;
-							break;
-						case 'N': case 'n':
+						}
+						case 'N', 'n' -> {
 							validInput = true;
 							playAgain = false;
-							break;
-						default:
+						}
+						default -> {
 							validInput = false;
 							System.out.println("Invalid selection.");
+						}
 					}
 				} while (!validInput);
 			} while (playAgain);
@@ -130,17 +131,15 @@ public class FreeCasino {
 	}
 
 	private static Game returnGame(int i) {
-		switch (i) {
-			case 1: return new Baccarat();
-			case 2: return new BigSix();
-			case 3: return new Blackjack();
-			case 4: return new Craps();
-			case 5: return new Keno();
-			case 6: // Poker
-			case 7: return new RedDog();
-			case 8: // Roulette
-			case 9: // Video Poker
-			default: throw new IllegalArgumentException();
-		}
+		return switch (i) {
+			case 1 -> new Baccarat();
+			case 2 -> new BigSix();
+			case 3 -> new Blackjack();
+			case 4 -> new Craps();
+			case 5 -> new Keno(); // Poker
+			case 6, 7 -> new RedDog(); // Roulette
+			// Video Poker
+			case 8, 9, default -> throw new IllegalArgumentException();
+		};
 	}
 }

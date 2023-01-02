@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021, Jeffrey Hope
+ * Copyright (c) 2023, Jeffrey Hope
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,17 +26,23 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino.games.electronic;
+package com.github.strangercoug.freecasino.objs;
 
-import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-public interface ElectronicGame {
-	void insertCredits(BigDecimal funds);
-	void betCredits(int credits);
-	void awardCredits(int credits);
-	BigDecimal ejectCredits();
+public abstract class CardHand {
+	LinkedList<Card> hand;
+
+	protected CardHand() {
+		hand = new LinkedList<>();
+	}
+
+	public List<Card> getCardHand() {
+		return hand;
+	}
+
+	public void dealToHand(Card card) {
+		hand.add(card);
+	}
 }

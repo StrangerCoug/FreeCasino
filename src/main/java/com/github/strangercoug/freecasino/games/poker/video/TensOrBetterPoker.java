@@ -28,7 +28,7 @@
  */
 package com.github.strangercoug.freecasino.games.poker.video;
 
-import com.github.strangercoug.freecasino.enums.PokerHand;
+import com.github.strangercoug.freecasino.enums.PokerRank;
 
 /**
  *
@@ -37,7 +37,7 @@ import com.github.strangercoug.freecasino.enums.PokerHand;
 public class TensOrBetterPoker extends VideoPoker {
 
 	@Override
-	public int rowSelect(PokerHand hand) {
+	public int rowSelect(PokerRank hand) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 

@@ -28,11 +28,14 @@
  */
 package com.github.strangercoug.freecasino.exceptions;
 
+import java.io.Serial;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class InsufficientFundsException extends RuntimeException {
+	@Serial
 	private static final long serialVersionUID = -2148521630698164553L;
 
 	public InsufficientFundsException() {}
