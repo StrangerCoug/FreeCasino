@@ -36,6 +36,8 @@ import com.github.strangercoug.freecasino.games.table.BigSix;
 import com.github.strangercoug.freecasino.games.table.Blackjack;
 import com.github.strangercoug.freecasino.games.table.Craps;
 import com.github.strangercoug.freecasino.games.table.RedDog;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -122,9 +124,7 @@ public class FreeCasino {
 							validInput = true;
 							playAgain = false;
 						}
-						default -> {
-							System.out.println("Invalid selection.");
-						}
+						default -> System.out.println("Invalid selection.");
 					}
 				} while (!validInput);
 			} while (playAgain);

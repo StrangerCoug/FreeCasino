@@ -43,6 +43,8 @@ public class Player {
 	private final String name;
 	private final boolean isHuman;
 	private BigDecimal funds;
+	private static final String DEFAULT_NAME = "Anonymous";
+	private static final BigDecimal DEFAULT_STARTING_FUNDS = new BigDecimal(1000, MathContext.DECIMAL64);
 
 	public Player(String name, boolean isHuman, BigDecimal funds) {
 		this.name = name;
@@ -51,22 +53,22 @@ public class Player {
 	}
 
 	public Player() {
-		this("Anonymous", true, new BigDecimal(1000, MathContext.DECIMAL64));
+		this(DEFAULT_NAME, true, DEFAULT_STARTING_FUNDS);
 	}
 	public Player(String name) {
-		this(name, true, new BigDecimal(1000, MathContext.DECIMAL64));
+		this(name, true, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(boolean isHuman) {
-		this("Anonymous", isHuman, new BigDecimal(1000, MathContext.DECIMAL64));
+		this(DEFAULT_NAME, isHuman, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(BigDecimal funds) {
-		this("Anonymous", true, funds);
+		this(DEFAULT_NAME, true, funds);
 	}
 
 	public Player(String name, boolean isHuman) {
-		this(name, isHuman, new BigDecimal(1000, MathContext.DECIMAL64));
+		this(name, isHuman, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(String name, BigDecimal funds) {
@@ -74,7 +76,7 @@ public class Player {
 	}
 
 	public Player(boolean isHuman, BigDecimal funds) {
-		this("Anonymous", isHuman, funds);
+		this(DEFAULT_NAME, isHuman, funds);
 	}
 
 	public String getName() {
@@ -89,12 +91,15 @@ public class Player {
 	}
 
 	public void addFunds(BigDecimal fundsCredited) {
-		funds = funds.add(fundsCredited);
+		funds = funds.add(fundsCredited.setScale(2, RoundingMode.HALF_UP));
 	}
 
 	public void subtractFunds(BigDecimal fundsDebited) {
-		if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) < 0)
-			throw new InsufficientFundsException("Tried to debit " + fundsDebited.toPlainString() + " with a balance of only " + funds.toPlainString());
-		funds = funds.subtract(fundsDebited);
+		if (funds.subtract(fundsDebited.setScale(2, RoundingMode.HALF_UP))
+					.compareTo(BigDecimal.ZERO) < 0)
+			throw new InsufficientFundsException("Tried to debit "
+					+ fundsDebited.setScale(2, RoundingMode.HALF_UP).toPlainString()
+					+ " with a balance of only " + funds.toPlainString());
+		funds = funds.subtract(fundsDebited.setScale(2, RoundingMode.HALF_UP));
 	}
 }

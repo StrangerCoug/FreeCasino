@@ -41,21 +41,20 @@ import java.math.RoundingMode;
  */
 public class Bet {
 	private final Player player;
-	private BigDecimal bet;
+	private BigDecimal amountBet;
 
-	public Bet (Player player, BigDecimal bet) {
+	public Bet (Player player, BigDecimal amountBet) {
 		this.player = player;
-		this.bet = bet;
-		bet.setScale(2, RoundingMode.HALF_EVEN);
-		player.subtractFunds(bet);
+		this.amountBet = amountBet.setScale(2, RoundingMode.HALF_EVEN);
+		player.subtractFunds(amountBet);
 	}
 
 	public Player getPlayer() {
 		return player;
 	}
 
-	public BigDecimal getBet() {
-		return bet;
+	public BigDecimal getAmountBet() {
+		return amountBet;
 	}
 
 	/**
@@ -65,7 +64,7 @@ public class Bet {
 	 * @param betAdded the amount to add to the bet 
 	 */
 	public void increaseBet(BigDecimal betAdded) {
-		bet = bet.add(betAdded);
+		amountBet = amountBet.add(betAdded);
 		player.subtractFunds(betAdded);
 	}
 
@@ -75,7 +74,7 @@ public class Bet {
 	 * @param betRemoved the amount to subtract from the bet
 	 */
 	public void decreaseBet(BigDecimal betRemoved) {
-		bet = bet.subtract(betRemoved);
+		amountBet = amountBet.subtract(betRemoved);
 		player.subtractFunds(betRemoved);
 	}
 
@@ -89,7 +88,7 @@ public class Bet {
 	 */
 
 	public BigDecimal awardBet(BigDecimal odds) {
-		BigDecimal winnings = bet.multiply(odds, MathContext.UNLIMITED);
+		BigDecimal winnings = amountBet.multiply(odds, MathContext.UNLIMITED);
 		return winnings.setScale(2, RoundingMode.HALF_EVEN);
 	}
 }
