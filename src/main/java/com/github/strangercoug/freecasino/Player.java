@@ -94,7 +94,7 @@ public class Player {
 
 	public void subtractFunds(BigDecimal fundsDebited) {
 		if (funds.subtract(fundsDebited).compareTo(BigDecimal.ZERO) < 0)
-			throw new InsufficientFundsException();
+			throw new InsufficientFundsException("Tried to debit " + fundsDebited.toPlainString() + " with a balance of only " + funds.toPlainString());
 		funds = funds.subtract(fundsDebited);
 	}
 }
