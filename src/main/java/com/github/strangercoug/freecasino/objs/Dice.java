@@ -36,17 +36,17 @@ package com.github.strangercoug.freecasino.objs;
  */
 public class Dice {
 	private final int[] dice;
-	private final int SIDES;
+	private final int SIDES_PER_DIE;
 
 	/**
 	 * Creates a number of dice.
-	 * 
-	 * @param number the number of dice to create
-	 * @param sides the number of sides per die
+	 *
+	 * @param number      the number of dice to create
+	 * @param sidesPerDie the number of sides per die
 	 */
-	public Dice(int number, int sides) {
+	public Dice(int number, int sidesPerDie) {
 		this.dice = new int[number];
-		this.SIDES = sides;
+		this.SIDES_PER_DIE = sidesPerDie;
 	}
 
 	/**
@@ -71,6 +71,16 @@ public class Dice {
 		System.arraycopy(dice, 0, theseDice, 0, dice.length);
 
 		return theseDice;
+	}
+
+	/**
+	 * This method should be used only for testing and error-checking. It is not
+	 * recommended to call this method in the game logic.
+	 *
+	 * @return the number of sides per die
+	 */
+	public int getSidesPerDie() {
+		return SIDES_PER_DIE;
 	}
 
 	/**
@@ -100,6 +110,6 @@ public class Dice {
 	 */
 	public void rollDice() {
 		for (int i = 0; i < dice.length; i++)
-			dice[i] = (int) (Math.random() * SIDES + 1);
+			dice[i] = (int) (Math.random() * SIDES_PER_DIE + 1);
 	}
 }

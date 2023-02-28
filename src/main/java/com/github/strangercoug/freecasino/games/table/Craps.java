@@ -45,20 +45,27 @@ import java.util.HashSet;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Craps extends Game implements TableGame {
-	private ArrayList<Player> players;
+	private ArrayList<Player> crapsPlayers;
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 	private Dice dice;
 	private HashSet<Bet> bets;
-	private boolean isComeOutRoll;
+	private int shooterIndex;
+	/**
+	 * This should always be null on the come out roll.
+	 */
+	private Point currentPoint;
 
 	/**
 	 * One-roll bets that are the equivalent of several one-roll bets placed simultaneously are not listed here.
 	 * Use a method to place the corresponding equivalents instead.
 	 */
-	private enum betType{
+	private enum BetType {
 		PASS(new BigDecimal(2)),
 		DONT_PASS(new BigDecimal(2)),
+		/**
+		 * Cannot be bet on the come out roll.
+		 */
 		COME(new BigDecimal(2)),
 		/**
 		 * Cannot be bet directly. Come bets are moved here if the next roll is a 4.
@@ -84,6 +91,9 @@ public class Craps extends Game implements TableGame {
 		 *  Cannot be bet directly. Come bets are moved here if the next roll is a 10.
 		 */
 		COME_10(new BigDecimal(2)),
+		/**
+		 * Cannot be bet on the come out roll.
+		 */
 		DONT_COME(new BigDecimal(2)),
 		/**
 		 * Cannot be bet directly. Don't Come bets are moved here if the next roll is a 4.
@@ -191,12 +201,31 @@ public class Craps extends Game implements TableGame {
 		 */
 		private final BigDecimal odds;
 
-		betType(BigDecimal odds) {
+		BetType(BigDecimal odds) {
 			this.odds = odds;
 		}
 
 		public BigDecimal getOdds() {
 			return odds;
+		}
+	}
+
+	private enum Point{
+		FOUR(4),
+		FIVE(5),
+		SIX(6),
+		EIGHT(8),
+		NINE(9),
+		TEN(10);
+
+		private final int pointValue;
+
+		Point(int pointValue) {
+			this.pointValue = pointValue;
+		}
+
+		public int getPointValue() {
+			return pointValue;
 		}
 	}
 
@@ -208,8 +237,52 @@ public class Craps extends Game implements TableGame {
 	@Override
 	public void play(ArrayList<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
+		crapsPlayers = players;
+		this.betMinimum = betMinimum;
+		this.betMaximum = betMaximum;
 		dice = new Dice();
-		isComeOutRoll = true;
+		shooterIndex = 0;
+		currentPoint = null;
+	}
+
+	private void shoot() {
+		dice.rollDice();
+
+		if (currentPoint == null) {
+			if (winsOnComeOut(dice)) {
+				/* TODO: Pay the bets on the pass line,
+				 * collect the bets on the don't pass line
+				 */
+			} else if (isCraps(dice)) {
+				/* TODO: Pay the bets on the don't pass line (except push on 12),
+				 * collect the bets on the pass line
+				 */
+			} else {
+				// Set the point
+				switch (dice.getTotal()) {
+					case 4 -> currentPoint = Point.FOUR;
+					case 5 -> currentPoint = Point.FIVE;
+					case 6 -> currentPoint = Point.SIX;
+					case 8 -> currentPoint = Point.EIGHT;
+					case 9 -> currentPoint = Point.NINE;
+					case 10 -> currentPoint = Point.TEN;
+					default -> throw new IllegalStateException();
+				}
+			}
+		} else {
+			if (dice.getTotal() == currentPoint.getPointValue()) {
+				/* TODO: Pay the bets on the pass line,
+				 * collect the bets on the don't pass line
+				 */
+				currentPoint = null;
+			} else if (dice.getTotal() == 7) {
+				/* TODO: Pay the bets on the don't pass line,
+				 * collect the bets on the pass line
+				 */
+				currentPoint = null;
+				advanceShooter();
+			}
+		}
 	}
 
 	@Override
@@ -219,12 +292,24 @@ public class Craps extends Game implements TableGame {
 				&& bet.compareTo(betMinimum) > -1);
 	}
 
+	private boolean isCraps(Dice dice) {
+		return dice.getTotal() == 2 || dice.getTotal() == 3 || dice.getTotal() == 12;
+	}
+
+	private boolean winsOnComeOut(Dice dice) {
+		return dice.getTotal() == 7 || dice.getTotal() == 11;
+	}
+
+	private void advanceShooter() {
+		shooterIndex = (shooterIndex + 1) % crapsPlayers.size();
+	}
+
 	/**
 	 * This should be subtracted from a buy or lay bet before paying true odds on the original bet.
 	 *
 	 * @return 5% of {@code amountBet}, rounded to the nearest dollar (half rounds down)
 	 */
-	public BigDecimal calculateVig(BigDecimal amountBet) {
+	private BigDecimal calculateVig(BigDecimal amountBet) {
 		if (amountBet.compareTo(BigDecimal.valueOf(20)) < 0)
 			return BigDecimal.ONE;
 		return amountBet.divide(BigDecimal.valueOf(20), 0, RoundingMode.HALF_DOWN);
