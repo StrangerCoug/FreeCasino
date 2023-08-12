@@ -36,7 +36,6 @@ import com.github.strangercoug.freecasino.objs.Bet;
 import com.github.strangercoug.freecasino.objs.BlackjackHand;
 import com.github.strangercoug.freecasino.objs.Deck;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
