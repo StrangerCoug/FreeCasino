@@ -39,7 +39,7 @@ import java.util.Random;
 public class Dice {
 	private final int[] dieFaces;
 	private final int SIDES_PER_DIE;
-	Random r;
+	private final Random r;
 
 	/**
 	 * Creates a number of dice.
