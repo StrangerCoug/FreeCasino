@@ -30,14 +30,14 @@
  */
 package com.github.strangercoug.freecasino;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
-	ArrayList<Player> players;
+	List<Player> players;
 
-	public abstract void play(ArrayList<Player> players);
+	public abstract void play(List<Player> players);
 }

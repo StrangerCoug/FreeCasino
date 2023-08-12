@@ -35,6 +35,7 @@ import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.objs.Wheel;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Because of the need for a different wheel for American and European roulette,
@@ -45,7 +46,7 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Roulette extends Game implements TableGame {
-	protected ArrayList<Player> players;
+	protected List<Player> players;
 	protected BigDecimal betMinimum;
 	protected BigDecimal betMaximum;
 	protected Wheel wheel;
@@ -59,7 +60,7 @@ public abstract class Roulette extends Game implements TableGame {
 	 * The stops of the roulette wheel. This will work for both American and
 	 * European roulette; the only difference is whether double zero is used and
 	 * the order of the stops.
-	 * 
+	 * <p>
 	 * The zeroes have special handling in this enum, see the
 	 * {@code AmericanRoulette} and {@code EuropeanRoulette} classes for
 	 * details.
@@ -167,12 +168,12 @@ public abstract class Roulette extends Game implements TableGame {
 	}
 
 	@Override
-	public void play(ArrayList<Player> players) {
+	public void play(List<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
 	@Override
-	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+	public void play(List<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
 		this.players = players;
 		this.betMinimum = betMinimum;

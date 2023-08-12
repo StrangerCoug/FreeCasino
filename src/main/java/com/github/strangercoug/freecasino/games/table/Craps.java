@@ -39,13 +39,14 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Craps extends Game implements TableGame {
-	private ArrayList<Player> crapsPlayers;
+	private List<Player> crapsPlayers;
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 	private Dice dice;
@@ -230,12 +231,12 @@ public class Craps extends Game implements TableGame {
 	}
 
 	@Override
-	public void play(ArrayList<Player> players) {
+	public void play(List<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
 	@Override
-	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+	public void play(List<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
 		crapsPlayers = players;
 		this.betMinimum = betMinimum;

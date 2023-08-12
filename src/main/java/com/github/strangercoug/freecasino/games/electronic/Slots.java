@@ -39,7 +39,9 @@ import java.math.BigDecimal;
 public abstract class Slots implements ElectronicGame {
 	protected byte[] reelStops;
 	protected int[][] payTable;
-	protected int creditsIn, creditsWon, creditsBet;
+	protected int creditsIn;
+	protected int creditsWon;
+	protected int creditsBet;
 	protected BigDecimal denomination;
 
 	@Override

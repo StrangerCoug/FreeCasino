@@ -32,7 +32,7 @@ package com.github.strangercoug.freecasino.games;
 
 import com.github.strangercoug.freecasino.Game;
 import com.github.strangercoug.freecasino.Player;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,7 +41,7 @@ import java.util.ArrayList;
 public class Keno extends Game {
 
 	@Override
-	public void play(ArrayList<Player> players) {
+	public void play(List<Player> players) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 

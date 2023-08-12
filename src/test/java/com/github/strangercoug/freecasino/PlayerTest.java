@@ -35,8 +35,6 @@ class PlayerTest {
 
 	@Test
 	void testSubtractFunds2() throws InsufficientFundsException {
-		assertThrows(InsufficientFundsException.class, () -> {
-			testPlayer.subtractFunds(excessiveTransactionAmount);
-		});
+		assertThrows(InsufficientFundsException.class, () -> testPlayer.subtractFunds(excessiveTransactionAmount));
 	}
 }

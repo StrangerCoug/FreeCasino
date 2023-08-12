@@ -33,23 +33,23 @@ package com.github.strangercoug.freecasino.games.table;
 import com.github.strangercoug.freecasino.Game;
 import com.github.strangercoug.freecasino.Player;
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class RedDog extends Game implements TableGame {
-	private ArrayList<Player> players;
+	private List<Player> players;
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 
-	public void play(ArrayList<Player> players) {
+	public void play(List<Player> players) {
 		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
 	@Override
-	public void play(ArrayList<Player> players, BigDecimal betMinimum,
+	public void play(List<Player> players, BigDecimal betMinimum,
 			BigDecimal betMaximum) {
 	}
 

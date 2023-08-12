@@ -32,15 +32,17 @@ package com.github.strangercoug.freecasino.games.table;
 
 import com.github.strangercoug.freecasino.Player;
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public interface TableGame {
-	void play(ArrayList<Player> players, BigDecimal betMinimum,
-			BigDecimal betMaximum);
+	void play(List<Player> players, BigDecimal betMinimum,
+	          BigDecimal betMaximum);
+
+	void play(List<Player> players);
 
 	boolean isValidBet(Player player, BigDecimal bet);
 }

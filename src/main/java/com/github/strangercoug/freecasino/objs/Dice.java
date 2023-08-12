@@ -30,13 +30,16 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
+import java.util.Random;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Dice {
-	private final int[] dice;
+	private final int[] dieFaces;
 	private final int SIDES_PER_DIE;
+	Random r;
 
 	/**
 	 * Creates a number of dice.
@@ -45,8 +48,9 @@ public class Dice {
 	 * @param sidesPerDie the number of sides per die
 	 */
 	public Dice(int number, int sidesPerDie) {
-		this.dice = new int[number];
+		this.dieFaces = new int[number];
 		this.SIDES_PER_DIE = sidesPerDie;
+		r = new Random();
 	}
 
 	/**
@@ -65,10 +69,10 @@ public class Dice {
 		this(2, 6);
 	}
 
-	public int[] getDice() {
-		int[] theseDice = new int[dice.length];
+	public int[] getDieFaces() {
+		int[] theseDice = new int[dieFaces.length];
 
-		System.arraycopy(dice, 0, theseDice, 0, dice.length);
+		System.arraycopy(dieFaces, 0, theseDice, 0, dieFaces.length);
 
 		return theseDice;
 	}
@@ -89,7 +93,7 @@ public class Dice {
 	 * @return the face value
 	 */
 	public int getDieFace(int index) {
-		return dice[index];
+		return dieFaces[index];
 	}
 
 	/**
@@ -99,7 +103,7 @@ public class Dice {
 	public int getTotal() {
 		int total = 0;
 
-		for (int i = 0; i < dice.length; i++)
+		for (int i = 0; i < dieFaces.length; i++)
 			total += getDieFace(i);
 
 		return total;
@@ -109,7 +113,7 @@ public class Dice {
 	 * Rolls the dice.
 	 */
 	public void rollDice() {
-		for (int i = 0; i < dice.length; i++)
-			dice[i] = (int) (Math.random() * SIDES_PER_DIE + 1);
+		for (int i = 0; i < dieFaces.length; i++)
+			dieFaces[i] = (r.nextInt(SIDES_PER_DIE) + 1);
 	}
 }

@@ -37,7 +37,6 @@ import com.github.strangercoug.freecasino.games.table.Blackjack;
 import com.github.strangercoug.freecasino.games.table.Craps;
 import com.github.strangercoug.freecasino.games.table.RedDog;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -109,25 +108,27 @@ public class FreeCasino {
 			}
 			System.out.println("Good luck!");
 
-			do {
-				game.play(players);
-				validInput = false;
+			if (game != null) {
 				do {
-					System.out.print("Play again? (Y/N): ");
-					char selection = input.nextLine().charAt(0);
-					switch (selection) {
-						case 'Y', 'y' -> {
-							validInput = true;
-							playAgain = true;
+					game.play(players);
+					validInput = false;
+					do {
+						System.out.print("Play again? (Y/N): ");
+						char selection = input.nextLine().charAt(0);
+						switch (selection) {
+							case 'Y', 'y' -> {
+								validInput = true;
+								playAgain = true;
+							}
+							case 'N', 'n' -> {
+								validInput = true;
+								playAgain = false;
+							}
+							default -> System.out.println("Invalid selection.");
 						}
-						case 'N', 'n' -> {
-							validInput = true;
-							playAgain = false;
-						}
-						default -> System.out.println("Invalid selection.");
-					}
-				} while (!validInput);
-			} while (playAgain);
+					} while (!validInput);
+				} while (playAgain);
+			}
 		}
 	}
 

@@ -88,8 +88,8 @@ public class Card implements Comparable<Card> {
 
 	/**
 	 * Checks whether this card outranks the card in the argument. This method,
-	 * unlike {@code compareTo(Card o)}, ignores suit, eliminating some of the
-	 * overhead from the {@code compareTo(Card o)} method.
+	 * unlike {@code compareTo(Card o)}, ignores suit, eliminating some overhead
+	 * from the {@code compareTo(Card o)} method.
 	 * 
 	 * @param other  the card to be compared to
 	 * @return true if the object card is higher in rank than the argument card,

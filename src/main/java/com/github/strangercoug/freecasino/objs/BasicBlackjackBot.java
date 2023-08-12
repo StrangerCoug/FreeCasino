@@ -33,7 +33,16 @@ package com.github.strangercoug.freecasino.objs;
 import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.enums.Action;
 
+/**
+ * This bot plays basic blackjack strategy and does not count cards. For bots
+ * that count cards, another subclass of {@link Player} implementing {@link
+ * BlackjackBot} for that counting strategy should be used (or created if it
+ * does not yet exist).
+ */
 public class BasicBlackjackBot extends Player implements BlackjackBot {
+	/* TODO: Ideally, this should follow basic strategy for any rule set; it
+	 * currently implements basic strategy for a specific rule set.
+	 */
 	@Override
 	public boolean takeInsurance() {
 		return false;
@@ -77,17 +86,17 @@ public class BasicBlackjackBot extends Player implements BlackjackBot {
 	private Action getSoftStrategy(BlackjackHand hand, Card upcard, boolean canAffordDoubleOrSplit) {
 		if (hand.getValue() >= 18) {
 			/*
-			  Rows are the rank of the pair; columns are the rank of the upcard.
+			  Rows are the value of the player hand; columns are the rank of the upcard.
 			 */
 			boolean[][] shouldDouble =
 					//  A      2      3      4      5      6      7      8      9     10
-					{{false, false, false, false, false, false, false, false, false, false}, // 12
-					 {false, false, false, false, true, true, false, false, false, false},   // 13
-					 {false, false, false, false, true, true, false, false, false, false},   // 14
-					 {false, false, false, true, true, true, false, false, false, false},    // 15
-					 {false, false, false, true, true, true, false, false, false, false},    // 16
-					 {false, false, true, true, true, true, false, false, false, false},     // 17
-					 {false, false, true, true, true, true, false, false, false, false}};    // 18
+					{{false, false, false, false, false, false, false, false, false, false},  // 12
+					 {false, false, false, false, true,  true,  false, false, false, false},  // 13
+					 {false, false, false, false, true,  true,  false, false, false, false},  // 14
+					 {false, false, false, true,  true,  true,  false, false, false, false},  // 15
+					 {false, false, false, true,  true,  true,  false, false, false, false},  // 16
+					 {false, false, true,  true,  true,  true,  false, false, false, false},  // 17
+					 {false, false, true,  true,  true,  true,  false, false, false, false}}; // 18
 
 			if (canAffordDoubleOrSplit && hand.canDouble() && shouldDouble[hand.getCardHand().get(0).getPointValue()-1][hand.getValue()-12])
 				return Action.DOUBLE;
@@ -107,11 +116,14 @@ public class BasicBlackjackBot extends Player implements BlackjackBot {
 		}
 
 		if (hand.getValue() >= 11) {
+			/*
+			  Rows are the value of the player hand; columns are the rank of the upcard.
+			 */
 			boolean[][] shouldDouble =
-					//  A      2      3      4      5      6      7      8      9     10
-					{{false, false, true,  true,  true,  true,  false, false, false, false}, // 9
-					 {false, true,  true,  true,  true,  true,  true,  true,  true,  false}, // 10
-					 {false, true,  true,  true,  true,  true,  true,  true,  true,  true}}; // 11
+					//  A      2      3     4     5     6     7      8      9     10
+					{{false, false, true, true, true, true, false, false, false, false}, // 9
+					 {false, true,  true, true, true, true, true,  true,  true,  false}, // 10
+					 {false, true,  true, true, true, true, true,  true,  true,  true}}; // 11
 			if (canAffordDoubleOrSplit && hand.canDouble() && shouldDouble[hand.getCardHand().get(0).getPointValue()-1][hand.getValue()-9])
 				return Action.DOUBLE;
 			return Action.HIT;

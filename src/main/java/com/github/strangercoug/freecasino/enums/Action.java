@@ -34,7 +34,7 @@ package com.github.strangercoug.freecasino.enums;
  * List of actions a player or dealer may take. They were designed with
  * blackjack in mind, but are useful in other games, which is why this enum is
  * public.
- * 
+ * <p>
  * It is not recommended to write any code that relies on the actions being in
  * any particular order. It may have additional actions added to it and be
  * reordered at any time based on need and convenience.
