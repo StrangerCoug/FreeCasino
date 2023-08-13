@@ -39,7 +39,7 @@ import java.security.SecureRandom;
 public class Dice {
 	private final int[] dieFaces;
 	private final int SIDES_PER_DIE;
-	private final SecureRandom rng;
+	private final SecureRandom rng = new SecureRandom();
 
 	/**
 	 * Creates a number of dice.
@@ -50,7 +50,6 @@ public class Dice {
 	public Dice(int number, int sidesPerDie) {
 		this.dieFaces = new int[number];
 		this.SIDES_PER_DIE = sidesPerDie;
-		rng = new SecureRandom();
 	}
 
 	/**
