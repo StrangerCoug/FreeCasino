@@ -33,11 +33,21 @@ package com.github.strangercoug.freecasino;
 import java.util.List;
 
 /**
+ * The abstract model class for each game. The implemented methods should be
+ * called only from controller classes.
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
 	List<Player> players;
 
-	public abstract void play(List<Player> players);
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public abstract void play();
 }

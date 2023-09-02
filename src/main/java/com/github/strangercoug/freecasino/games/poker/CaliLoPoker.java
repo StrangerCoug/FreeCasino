@@ -30,9 +30,7 @@
  */
 package com.github.strangercoug.freecasino.games.poker;
 
-import com.github.strangercoug.freecasino.Player;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 /**
  *
@@ -40,9 +38,7 @@ import java.util.ArrayList;
  */
 public class CaliLoPoker extends DrawPoker {
 	@Override
-	public void play(ArrayList<Player> players, BigDecimal betMinimum,
-			BigDecimal betMaximum) {
-		this.players = players;
+	public void play(BigDecimal betMinimum, BigDecimal betMaximum) {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 	}

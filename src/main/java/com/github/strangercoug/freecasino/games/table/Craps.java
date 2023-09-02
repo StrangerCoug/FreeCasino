@@ -38,14 +38,12 @@ import com.github.strangercoug.freecasino.objs.Dice;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Craps extends Game implements TableGame {
-	private List<Player> crapsPlayers;
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 	private Dice dice;
@@ -230,14 +228,12 @@ public class Craps extends Game implements TableGame {
 	}
 
 	@Override
-	public void play(List<Player> players) {
-		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+	public void play() {
+		play(BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
 	@Override
-	public void play(List<Player> players, BigDecimal betMinimum,
-			BigDecimal betMaximum) {
-		crapsPlayers = players;
+	public void play(BigDecimal betMinimum, BigDecimal betMaximum) {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 		dice = new Dice();
@@ -301,7 +297,7 @@ public class Craps extends Game implements TableGame {
 	}
 
 	private void advanceShooter() {
-		shooterIndex = (shooterIndex + 1) % crapsPlayers.size();
+		shooterIndex = (shooterIndex + 1) % getPlayers().size();
 	}
 
 	/**

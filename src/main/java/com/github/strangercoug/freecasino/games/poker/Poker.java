@@ -30,19 +30,16 @@
  */
 package com.github.strangercoug.freecasino.games.poker;
 
-import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.objs.Card;
 import com.github.strangercoug.freecasino.objs.Deck;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Poker {
-	protected ArrayList<Player> players;
 	protected BigDecimal betMinimum;
 	protected BigDecimal betMaximum;
 	protected Deck deck;

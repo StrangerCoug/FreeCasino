@@ -28,18 +28,30 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino.games.poker;
+package com.github.strangercoug.freecasino;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class SevenCardStudPoker extends StudPoker {
-	@Override
-	public void play(BigDecimal betMinimum, BigDecimal betMaximum) {
-		this.betMinimum = betMinimum;
-		this.betMaximum = betMaximum;
+public abstract class GameController {
+	private final Game model;
+	private final GameView view;
+
+	protected GameController (Game model, GameView view) {
+		this.model = model;
+		this.view = view;
 	}
+
+	public void setPlayers(List<Player> players) {
+		model.setPlayers(players);
+	}
+
+	public List<Player> getPlayers() {
+		return model.getPlayers();
+	}
+
+	public abstract void updateView();
 }

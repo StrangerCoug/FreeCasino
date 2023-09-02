@@ -38,14 +38,12 @@ import com.github.strangercoug.freecasino.objs.Deck;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Blackjack extends Game implements TableGame {
-	private List<Player> players;
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
 	private Deck deck;
@@ -54,14 +52,12 @@ public class Blackjack extends Game implements TableGame {
 	private HashSet<Bet> bets;
 
 	@Override
-	public void play(List<Player> players) {
-		play(players, BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
+	public void play() {
+		play(BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
 	@Override
-	public void play(List<Player> players, BigDecimal betMinimum,
-			BigDecimal betMaximum) {
-		this.players = players;
+	public void play(BigDecimal betMinimum, BigDecimal betMaximum) {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
 
@@ -69,12 +65,12 @@ public class Blackjack extends Game implements TableGame {
 		 * control this. Ideally, we'd want to read from an option file.
 		 */
 		deck = new Deck(6);
-		bets = new HashSet<>(players.size());
+		bets = new HashSet<>(getPlayers().size());
 
 		playerHands = new LinkedList<>();
 		dealerHand = new BlackjackHand();
 
-		for (Player player : players) {
+		for (int i = 0; i < getPlayers().size(); i++) {
 			playerHands.add(new BlackjackHand());
 		}
 	}
