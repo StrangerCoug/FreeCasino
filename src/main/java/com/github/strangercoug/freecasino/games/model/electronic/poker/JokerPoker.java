@@ -45,6 +45,6 @@ public class JokerPoker extends VideoPoker {
 
 	@Override
 	public void play() {
-		
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }
