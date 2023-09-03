@@ -31,7 +31,6 @@
 package com.github.strangercoug.freecasino.games.model;
 
 import com.github.strangercoug.freecasino.enums.CardRank;
-import com.github.strangercoug.freecasino.games.model.Game;
 import com.github.strangercoug.freecasino.objs.Card;
 import com.github.strangercoug.freecasino.objs.Deck;
 import java.math.BigDecimal;
