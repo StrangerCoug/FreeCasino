@@ -43,6 +43,7 @@
 					<target>${maven.compiler.target}</target>
 					<compilerArgs>${maven.compiler.compilerArgs}</compilerArgs>
 				</configuration>
+				<version>3.11.0</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
