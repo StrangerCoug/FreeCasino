@@ -41,13 +41,12 @@
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
-					<compilerArgs>${maven.compiler.compilerArgs}</compilerArgs>
 				</configuration>
 				<version>3.11.0</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>3.1.2</version>
 			</plugin>
 		</plugins>
 	</build>
