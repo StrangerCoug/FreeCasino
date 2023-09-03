@@ -11,8 +11,10 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<junit.jupiter.version>5.10.0</junit.jupiter.version>
+		<sonar.organization>strangercoug</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
