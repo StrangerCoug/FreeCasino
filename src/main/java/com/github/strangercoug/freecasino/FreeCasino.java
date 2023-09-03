@@ -30,12 +30,13 @@
  */
 package com.github.strangercoug.freecasino;
 
-import com.github.strangercoug.freecasino.games.Keno;
-import com.github.strangercoug.freecasino.games.table.Baccarat;
-import com.github.strangercoug.freecasino.games.table.BigSix;
-import com.github.strangercoug.freecasino.games.table.Blackjack;
-import com.github.strangercoug.freecasino.games.table.Craps;
-import com.github.strangercoug.freecasino.games.table.RedDog;
+import com.github.strangercoug.freecasino.games.model.Game;
+import com.github.strangercoug.freecasino.games.model.electronic.Keno;
+import com.github.strangercoug.freecasino.games.model.table.Baccarat;
+import com.github.strangercoug.freecasino.games.model.table.BigSix;
+import com.github.strangercoug.freecasino.games.model.table.Blackjack;
+import com.github.strangercoug.freecasino.games.model.table.Craps;
+import com.github.strangercoug.freecasino.games.model.table.RedDog;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -110,7 +111,7 @@ public class FreeCasino {
 
 			if (game != null) {
 				do {
-					game.play(players);
+					game.play();
 					validInput = false;
 					do {
 						System.out.print("Play again? (Y/N): ");
@@ -138,10 +139,10 @@ public class FreeCasino {
 			case 2 -> new BigSix();
 			case 3 -> new Blackjack();
 			case 4 -> new Craps();
-			case 5 -> new Keno(); // Poker
-			case 6, 7 -> new RedDog(); // Roulette
-			// Video Poker
-			case 8, 9, default -> throw new IllegalArgumentException();
+			case 5 -> new Keno();
+			case 7 -> new RedDog();
+			case 6, 8, 9 -> throw new UnsupportedOperationException("Not supported yet.");
+			default -> throw new IllegalArgumentException();
 		};
 	}
 }
