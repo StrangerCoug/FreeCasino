@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -65,6 +66,22 @@ class CardTest {
         Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
         assertThat(card1.equals(card2), equalTo(true));
         assertThat(card1.hashCode(), equalTo(card2.hashCode()));
+    }
+
+    @Test
+    void testEqualsAndHashCodeDifferentRank() {
+        Card card1 = new Card(CardRank.TWO, CardSuit.SPADES);
+        Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
+        assertThat(card1.equals(card2), equalTo(false));
+        assertThat(card1.hashCode(), not(equalTo(card2.hashCode())));
+    }
+
+    @Test
+    void testEqualsAndHashCodeDifferentSuit() {
+        Card card1 = new Card(CardRank.ACE, CardSuit.CLUBS);
+        Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
+        assertThat(card1.equals(card2), equalTo(false));
+        assertThat(card1.hashCode(), not(equalTo(card2.hashCode())));
     }
 
     @Test
