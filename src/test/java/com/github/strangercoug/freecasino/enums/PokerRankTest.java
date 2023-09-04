@@ -50,26 +50,26 @@ class PokerRankTest {
 
 	private static Stream<Arguments> pokerRankToString() {
 		return Stream.of(
-				arguments(PokerRank.NOTHING, "Nothing"),
-				arguments(PokerRank.ONE_PAIR, "One Pair"),
-				arguments(PokerRank.TENS_OR_BETTER, "Tens or Better"),
-				arguments(PokerRank.JACKS_OR_BETTER, "Jacks or Better"),
-				arguments(PokerRank.TWO_PAIR, "Two Pair"),
-				arguments(PokerRank.THREE_OF_A_KIND, "Three of a Kind"),
-				arguments(PokerRank.STRAIGHT, "Straight"),
-				arguments(PokerRank.FLUSH, "Flush"),
-				arguments(PokerRank.FULL_HOUSE, "Full House"),
-				arguments(PokerRank.FOUR_OF_A_KIND, "Four of a Kind"),
-				arguments(PokerRank.FOUR_2S_THRU_4S, "Four 2-4"),
-				arguments(PokerRank.FOUR_ACES, "Four Aces"),
-				arguments(PokerRank.FOUR_2S_THRU_4S_WITH_ACE_THRU_4, "Four 2-4 with A-4"),
-				arguments(PokerRank.FOUR_ACES_WITH_2_THRU_4, "Four Aces with 2-4"),
-				arguments(PokerRank.STRAIGHT_FLUSH, "Straight Flush"),
-				arguments(PokerRank.FIVE_OF_A_KIND, "Five of a Kind"),
-				arguments(PokerRank.WILD_ROYAL, "Wild Royal Flush"),
-				arguments(PokerRank.FOUR_DEUCES, "Four Deuces"),
-				arguments(PokerRank.NATURAL_ROYAL, "Natural Royal Flush"),
-				arguments(PokerRank.FIVE_WILDS, "Five Wilds")
+			arguments(PokerRank.NOTHING, "Nothing"),
+			arguments(PokerRank.ONE_PAIR, "One Pair"),
+			arguments(PokerRank.TENS_OR_BETTER, "Tens or Better"),
+			arguments(PokerRank.JACKS_OR_BETTER, "Jacks or Better"),
+			arguments(PokerRank.TWO_PAIR, "Two Pair"),
+			arguments(PokerRank.THREE_OF_A_KIND, "Three of a Kind"),
+			arguments(PokerRank.STRAIGHT, "Straight"),
+			arguments(PokerRank.FLUSH, "Flush"),
+			arguments(PokerRank.FULL_HOUSE, "Full House"),
+			arguments(PokerRank.FOUR_OF_A_KIND, "Four of a Kind"),
+			arguments(PokerRank.FOUR_2S_THRU_4S, "Four 2-4"),
+			arguments(PokerRank.FOUR_ACES, "Four Aces"),
+			arguments(PokerRank.FOUR_2S_THRU_4S_WITH_ACE_THRU_4, "Four 2-4 with A-4"),
+			arguments(PokerRank.FOUR_ACES_WITH_2_THRU_4, "Four Aces with 2-4"),
+			arguments(PokerRank.STRAIGHT_FLUSH, "Straight Flush"),
+			arguments(PokerRank.FIVE_OF_A_KIND, "Five of a Kind"),
+			arguments(PokerRank.WILD_ROYAL, "Wild Royal Flush"),
+			arguments(PokerRank.FOUR_DEUCES, "Four Deuces"),
+			arguments(PokerRank.NATURAL_ROYAL, "Natural Royal Flush"),
+			arguments(PokerRank.FIVE_WILDS, "Five Wilds")
 		);
 	}
 }
