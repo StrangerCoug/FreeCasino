@@ -118,7 +118,7 @@ public class Card implements Comparable<Card> {
 		if (getClass() != obj.getClass())
 			return false;
 
-		final Card other = (Card) obj;
+		Card other = (Card) obj;
 
 		return rank == other.getRank() && suit == other.getSuit();
 	}
