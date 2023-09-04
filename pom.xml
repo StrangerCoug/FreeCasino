@@ -12,7 +12,7 @@
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<junit.jupiter.version>5.10.0</junit.jupiter.version>
 		<sonar.projectKey>StrangerCoug_FreeCasino</sonar.projectKey>
-		<jacoco.version>0.8.6</jacoco.version>
+		<jacoco.version>0.8.10</jacoco.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.java.binaries>target/</sonar.java.binaries>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
