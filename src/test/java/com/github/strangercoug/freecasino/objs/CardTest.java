@@ -2,7 +2,7 @@ package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.enums.CardSuit;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -14,10 +14,10 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CardTest {
-    private LinkedList<Card> cards;
+    private static LinkedList<Card> cards;
 
-    @BeforeEach
-    void setCards() {
+    @BeforeAll
+    static void setCards() {
         cards = new LinkedList<>();
         CardRank[] ranks = new CardRank[]{CardRank.TWO, CardRank.THREE, CardRank.FOUR, CardRank.FIVE, CardRank.SIX,
                 CardRank.SEVEN, CardRank.EIGHT, CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN, CardRank.KING,
