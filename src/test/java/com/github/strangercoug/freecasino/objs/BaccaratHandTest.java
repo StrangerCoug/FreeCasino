@@ -32,8 +32,17 @@ class BaccaratHandTest {
         assertThat(baccaratHand.isNatural(), equalTo(true));
     }
 
+
     @Test
-    void testIsNaturalNineThreeCards() {
+    void testIsNaturalFalseTwoCards() {
+        baccaratHand.dealToHand(new Card(CardRank.TEN, CardSuit.SPADES));
+        baccaratHand.dealToHand(new Card(CardRank.SEVEN, CardSuit.HEARTS));
+        assertThat(baccaratHand.getHandValue(), equalTo(7));
+        assertThat(baccaratHand.isNatural(), equalTo(false));
+    }
+
+    @Test
+    void testIsNaturalFalseThreeCards() {
         baccaratHand.dealToHand(new Card(CardRank.THREE, CardSuit.SPADES));
         baccaratHand.dealToHand(new Card(CardRank.THREE, CardSuit.HEARTS));
         baccaratHand.dealToHand(new Card(CardRank.THREE, CardSuit.DIAMONDS));
