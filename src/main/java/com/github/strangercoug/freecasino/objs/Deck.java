@@ -42,16 +42,16 @@ import java.util.LinkedList;
  */
 public class Deck {
 	private final LinkedList<Card> cards;
-	private final int NUM_DECKS;
-	private final boolean USES_BLACK_JOKER;
-	private final boolean USES_RED_JOKER;
+	private final int numDecks;
+	private final boolean usesBlackJoker;
+	private final boolean usesRedJoker;
 	private final SecureRandom rng = new SecureRandom();
 
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
 		cards = new LinkedList<>();
-		NUM_DECKS = numDecks;
-		USES_BLACK_JOKER = usesBlackJoker;
-		USES_RED_JOKER = usesRedJoker;
+		this.numDecks = numDecks;
+		this.usesBlackJoker = usesBlackJoker;
+		this.usesRedJoker = usesRedJoker;
 	}
 
 	public Deck(int numDecks) {
@@ -70,14 +70,14 @@ public class Deck {
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
 				CardSuit.SPADES};
 
-		for (int i = 0; i < NUM_DECKS; i++) {
+		for (int i = 0; i < numDecks; i++) {
 			for (int j = 0; j < ranks.length * suits.length; j++)
 				cards.add(new Card(ranks[i/4], suits[i%4]));
 
-			if (USES_BLACK_JOKER)
+			if (usesBlackJoker)
 				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
 
-			if (USES_RED_JOKER)
+			if (usesRedJoker)
 				cards.add(new Card(CardRank.JOKER, CardSuit.RED));
 		}
 	}

@@ -38,7 +38,7 @@ import java.security.SecureRandom;
  */
 public class Dice {
 	private final int[] dieFaces;
-	private final int SIDES_PER_DIE;
+	private final int sidesPerDie;
 	private final SecureRandom rng = new SecureRandom();
 
 	/**
@@ -49,7 +49,7 @@ public class Dice {
 	 */
 	public Dice(int number, int sidesPerDie) {
 		dieFaces = new int[number];
-		SIDES_PER_DIE = sidesPerDie;
+		this.sidesPerDie = sidesPerDie;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Dice {
 	 * @return the number of sides per die
 	 */
 	public int getSidesPerDie() {
-		return SIDES_PER_DIE;
+		return sidesPerDie;
 	}
 
 	/**
@@ -113,6 +113,6 @@ public class Dice {
 	 */
 	public void rollDice() {
 		for (int i = 0; i < dieFaces.length; i++)
-			dieFaces[i] = (rng.nextInt(SIDES_PER_DIE) + 1);
+			dieFaces[i] = (rng.nextInt(sidesPerDie) + 1);
 	}
 }
