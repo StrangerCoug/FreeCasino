@@ -222,7 +222,7 @@ public class Craps extends Game implements TableGame {
 			this.pointValue = pointValue;
 		}
 
-		public int getPointValue() {
+		int getPointValue() {
 			return pointValue;
 		}
 	}

@@ -41,7 +41,7 @@ import java.util.List;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Game {
-	List<Player> players;
+	private List<Player> players;
 
 	public void setPlayers(List<Player> players) {
 		this.players = players;

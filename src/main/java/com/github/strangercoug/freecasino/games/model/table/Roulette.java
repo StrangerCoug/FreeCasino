@@ -44,10 +44,10 @@ import java.math.BigDecimal;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Roulette extends Game implements TableGame {
-	protected BigDecimal betMinimum;
-	protected BigDecimal betMaximum;
-	protected Wheel wheel;
-	protected Stop result;
+	private BigDecimal betMinimum;
+	private BigDecimal betMaximum;
+	private Wheel wheel;
+	private Stop result;
 
 	protected enum Color {
 		GREEN, RED, BLACK
@@ -184,5 +184,5 @@ public abstract class Roulette extends Game implements TableGame {
 				&& bet.compareTo(betMinimum) > -1);
 	}
 	
-	public abstract Wheel generateWheel();
+	protected abstract Wheel generateWheel();
 }

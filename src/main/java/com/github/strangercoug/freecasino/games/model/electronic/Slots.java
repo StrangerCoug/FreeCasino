@@ -39,8 +39,8 @@ import java.math.BigDecimal;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public abstract class Slots extends Game implements ElectronicGame {
-	protected final byte[] reelStops;
-	protected final int[][] payTable;
+	private final byte[] reelStops;
+	private final int[][] payTable;
 	private int creditsIn;
 	private int creditsWon;
 	private int creditsBet;

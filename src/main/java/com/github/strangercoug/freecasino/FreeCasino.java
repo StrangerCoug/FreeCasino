@@ -45,7 +45,7 @@ import java.util.Scanner;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class FreeCasino {
+class FreeCasino {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		boolean validInput = false, playAgain = false;

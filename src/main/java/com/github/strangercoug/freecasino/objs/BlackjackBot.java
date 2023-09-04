@@ -32,7 +32,7 @@ package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.enums.Action;
 
-public interface BlackjackBot {
+interface BlackjackBot {
 	/**
 	 * Whether and under what circumstances to take insurance.
 	 */

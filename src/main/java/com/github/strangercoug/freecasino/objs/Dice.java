@@ -91,7 +91,7 @@ public class Dice {
 	 * @param index the die from which to return the face
 	 * @return the face value
 	 */
-	public int getDieFace(int index) {
+	private int getDieFace(int index) {
 		return dieFaces[index];
 	}
 

@@ -76,7 +76,7 @@ public abstract class Poker extends Game {
 		};
 	}
 
-	public boolean isFourOfAKind(Card[] hand) {
+	private boolean isFourOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
 		for (int j : cardsPerRank)
@@ -94,7 +94,7 @@ public abstract class Poker extends Game {
 		return true;
 	}
 
-	public boolean isThreeOfAKind(Card[] hand) {
+	private boolean isThreeOfAKind(Card[] hand) {
 		int[] cardsPerRank = countRanks(hand);
 
 		for (int j : cardsPerRank)

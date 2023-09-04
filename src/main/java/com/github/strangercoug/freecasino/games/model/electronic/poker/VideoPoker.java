@@ -43,8 +43,10 @@ import java.math.BigDecimal;
 public abstract class VideoPoker extends Poker implements ElectronicGame {
 	protected Card[] hand;
 	protected int[][] payTable;
-	protected int creditsIn, creditsWon, creditsBet;
-	protected BigDecimal denomination;
+	private int creditsIn;
+	private int creditsWon;
+	private int creditsBet;
+	private BigDecimal denomination;
 
 	@Override
 	public void insertCredits(BigDecimal funds) {

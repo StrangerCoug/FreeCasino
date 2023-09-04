@@ -36,7 +36,7 @@ import java.io.Serial;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class BetTooLowException extends RuntimeException {
+class BetTooLowException extends RuntimeException {
 	@Serial
 	private static final long serialVersionUID = 5777428818743761377L;
 

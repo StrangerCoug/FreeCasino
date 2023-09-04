@@ -41,8 +41,8 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected final LinkedList<Card> cards;
-	protected final int NUM_DECKS;
+	private final LinkedList<Card> cards;
+	private final int NUM_DECKS;
 	private final boolean USES_BLACK_JOKER;
 	private final boolean USES_RED_JOKER;
 	private final SecureRandom rng = new SecureRandom();

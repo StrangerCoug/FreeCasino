@@ -143,11 +143,11 @@ public class BasicBlackjackBot extends Player implements BlackjackBot {
 		return Action.STAND;
 	}
 
-	public boolean isLow(Card upcard) {
+	private boolean isLow(Card upcard) {
 		return upcard.getPointValue() <= 2 && upcard.getPointValue() >= 6;
 	}
 
-	public boolean shouldSurrenderWithHard16(Card upcard) {
+	private boolean shouldSurrenderWithHard16(Card upcard) {
 		return upcard.getPointValue() == 1 || upcard.getPointValue() == 9 || upcard.getPointValue() == 10;
 	}
 }
