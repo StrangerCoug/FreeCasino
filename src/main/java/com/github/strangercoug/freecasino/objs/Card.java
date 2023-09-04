@@ -152,7 +152,7 @@ public class Card implements Comparable<Card> {
 	@Override
 	public String toString() {
 		if (rank == CardRank.JOKER)
-			return suitNames[suit.ordinal()] + rankNames[rank.ordinal()];
+			return suitNames[suit.ordinal()] + " " + rankNames[rank.ordinal()];
 
 		return rankNames[rank.ordinal()] + " of " + suitNames[suit.ordinal()];
 	}
