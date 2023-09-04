@@ -75,7 +75,7 @@ class FreeCasino {
 					int gameSelected = Integer.parseInt(entry);
 					if (gameSelected >= 1 && gameSelected <= 9)
 						validInput = true;
-					game = FreeCasino.returnGame(gameSelected);
+					game = returnGame(gameSelected);
 				}
 				catch (NumberFormatException e) {
 					System.out.println("Invalid input.");

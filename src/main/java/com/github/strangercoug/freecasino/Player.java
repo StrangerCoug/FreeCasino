@@ -53,22 +53,22 @@ public class Player {
 	}
 
 	public Player() {
-		this(Player.DEFAULT_NAME, true, Player.DEFAULT_STARTING_FUNDS);
+		this(DEFAULT_NAME, true, DEFAULT_STARTING_FUNDS);
 	}
 	public Player(String name) {
-		this(name, true, Player.DEFAULT_STARTING_FUNDS);
+		this(name, true, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(boolean isHuman) {
-		this(Player.DEFAULT_NAME, isHuman, Player.DEFAULT_STARTING_FUNDS);
+		this(DEFAULT_NAME, isHuman, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(BigDecimal funds) {
-		this(Player.DEFAULT_NAME, true, funds);
+		this(DEFAULT_NAME, true, funds);
 	}
 
 	public Player(String name, boolean isHuman) {
-		this(name, isHuman, Player.DEFAULT_STARTING_FUNDS);
+		this(name, isHuman, DEFAULT_STARTING_FUNDS);
 	}
 
 	public Player(String name, BigDecimal funds) {
@@ -76,7 +76,7 @@ public class Player {
 	}
 
 	public Player(boolean isHuman, BigDecimal funds) {
-		this(Player.DEFAULT_NAME, isHuman, funds);
+		this(DEFAULT_NAME, isHuman, funds);
 	}
 
 	public String getName() {
