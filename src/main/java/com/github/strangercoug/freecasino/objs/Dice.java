@@ -48,8 +48,8 @@ public class Dice {
 	 * @param sidesPerDie the number of sides per die
 	 */
 	public Dice(int number, int sidesPerDie) {
-		this.dieFaces = new int[number];
-		this.SIDES_PER_DIE = sidesPerDie;
+		dieFaces = new int[number];
+		SIDES_PER_DIE = sidesPerDie;
 	}
 
 	/**

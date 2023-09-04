@@ -99,14 +99,14 @@ public class Card implements Comparable<Card> {
 		if (other == null)
 			throw new NullPointerException();
 
-		return this.rank.ordinal() > other.getRank().ordinal();
+		return rank.ordinal() > other.getRank().ordinal();
 	}
 
 	@Override
 	public int hashCode() {
 		int hash = 7;
-		hash = 59 * hash + Objects.hashCode(this.rank);
-		hash = 59 * hash + Objects.hashCode(this.suit);
+		hash = 59 * hash + Objects.hashCode(rank);
+		hash = 59 * hash + Objects.hashCode(suit);
 		return hash;
 	}
 
@@ -120,7 +120,7 @@ public class Card implements Comparable<Card> {
 
 		final Card other = (Card) obj;
 
-		return this.rank == other.getRank() && this.suit == other.getSuit();
+		return rank == other.getRank() && suit == other.getSuit();
 	}
 
 	/**
@@ -144,8 +144,8 @@ public class Card implements Comparable<Card> {
 		if (other == null)
 			throw new NullPointerException();
 
-		return (this.suit.ordinal() * CardRank.values().length +
-		        this.rank.ordinal()) - (other.getSuit().ordinal() *
+		return (suit.ordinal() * CardRank.values().length +
+		        rank.ordinal()) - (other.getSuit().ordinal() *
 		        CardRank.values().length + other.getRank().ordinal());
 	}
 

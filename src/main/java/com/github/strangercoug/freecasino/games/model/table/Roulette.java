@@ -173,8 +173,8 @@ public abstract class Roulette extends Game implements TableGame {
 	public void play(BigDecimal betMinimum, BigDecimal betMaximum) {
 		this.betMinimum = betMinimum;
 		this.betMaximum = betMaximum;
-		this.wheel = generateWheel();
-		this.result = (Stop)wheel.getWheelResult();
+		wheel = generateWheel();
+		result = (Stop)wheel.getWheelResult();
 	}
 
 	@Override
