@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 
-public class DeckTest {
+class DeckTest {
     Deck deck;
     final int deckSize = 52;
     final int numJokers = 2;
