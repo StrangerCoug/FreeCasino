@@ -72,7 +72,7 @@ public class Deck {
 
 		for (int i = 0; i < numDecks; i++) {
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				cards.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[j%ranks.length], suits[j/ranks.length]));
 
 			if (usesBlackJoker)
 				cards.add(new Card(CardRank.JOKER, CardSuit.BLACK));
