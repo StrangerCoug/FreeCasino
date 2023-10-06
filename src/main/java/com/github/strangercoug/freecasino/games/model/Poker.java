@@ -60,7 +60,7 @@ public abstract class Poker extends Game {
 		int[] cardsPerRank = new int[14];
 
 		for (Card hand1 : hand) {
-			cardsPerRank[hand1.getRank().ordinal()]++;
+			cardsPerRank[hand1.rank().ordinal()]++;
 		}
 
 		return cardsPerRank;
@@ -88,7 +88,7 @@ public abstract class Poker extends Game {
 
 	public boolean isFlush(Card[] hand) {
 		for (int i = 1; i < hand.length; i++)
-			if (!hand[i].getSuit().equals(hand[i-1].getSuit()))
+			if (!hand[i].suit().equals(hand[i-1].suit()))
 				return false;
 
 		return true;

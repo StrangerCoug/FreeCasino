@@ -46,6 +46,6 @@ public class BaccaratHand extends CardHand {
 	}
 
 	public boolean isPair() {
-		return hand.get(0).getRank() == hand.get(1).getRank();
+		return hand.get(0).rank() == hand.get(1).rank();
 	}
 }

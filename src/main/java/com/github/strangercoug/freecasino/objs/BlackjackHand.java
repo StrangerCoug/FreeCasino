@@ -41,7 +41,7 @@ public class BlackjackHand extends CardHand {
 	 * @return the card's value
 	 */
 	private int getCardValue(Card card) {
-		return switch (card.getRank()) {
+		return switch (card.rank()) {
 			case ACE -> 1;
 			case TWO -> 2;
 			case THREE -> 3;
@@ -70,7 +70,7 @@ public class BlackjackHand extends CardHand {
 
 		if (total <= 11) {
 			for (Card card : hand) {
-				if (card.getRank() == CardRank.ACE) {
+				if (card.rank() == CardRank.ACE) {
 					total += 10;
 					break;
 				}

@@ -32,40 +32,20 @@ package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.enums.CardSuit;
-import java.util.Objects;
 
 /**
  *
+ * @param rank  the card's rank
+ * @param suit  the card's suit
+ *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Card implements Comparable<Card> {
-	private final CardRank rank;
-	private final CardSuit suit;
-
-	private final String[] rankNames = {"Two", "Three", "Four", "Five", "Six",
+public record Card(CardRank rank, CardSuit suit) implements Comparable<Card> {
+	private static final String[] rankNames = {"Two", "Three", "Four", "Five", "Six",
 		"Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace",
 		"Joker"};
-	private final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades",
+	private static final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades",
 		"Black", "Red"};
-
-	/**
-	 * Sole constructor.
-	 * 
-	 * @param rank  the card's rank
-	 * @param suit  the card's suit
-	 */
-	public Card(CardRank rank, CardSuit suit) {
-		this.rank = rank;
-		this.suit = suit;
-	}
-
-	public CardRank getRank() {
-		return rank;
-	}
-
-	public CardSuit getSuit() {
-		return suit;
-	}
 
 	/**
 	 * This method is intended only for baccarat and variants of twenty-one. Use {@code getRank()} if the tens and face
@@ -99,28 +79,7 @@ public class Card implements Comparable<Card> {
 		if (other == null)
 			throw new NullPointerException();
 
-		return rank.ordinal() > other.getRank().ordinal();
-	}
-
-	@Override
-	public int hashCode() {
-		int hash = 7;
-		hash = 59 * hash + Objects.hashCode(rank);
-		hash = 59 * hash + Objects.hashCode(suit);
-		return hash;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null)
-			return false;
-
-		if (getClass() != obj.getClass())
-			return false;
-
-		Card other = (Card) obj;
-
-		return rank == other.getRank() && suit == other.getSuit();
+		return rank.ordinal() > other.rank().ordinal();
 	}
 
 	/**
@@ -145,8 +104,8 @@ public class Card implements Comparable<Card> {
 			throw new NullPointerException();
 
 		return (suit.ordinal() * CardRank.values().length +
-		        rank.ordinal()) - (other.getSuit().ordinal() *
-		        CardRank.values().length + other.getRank().ordinal());
+		        rank.ordinal()) - (other.suit().ordinal() *
+		        CardRank.values().length + other.rank().ordinal());
 	}
 
 	@Override
