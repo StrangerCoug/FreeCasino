@@ -137,7 +137,7 @@ public abstract class Roulette extends Game implements TableGame {
 	}
 
 	/**
-	 * For legibility, this enum combines certain types of bets together that has
+	 * For legibility, this enum combines certain types of bets together that have
 	 * the same odds. For example, bets of 0-1-2, 0-00-2, and 0/00-2-3 are special
 	 * cases of the corner bets, not street bets; but in the internal logic they are
 	 * counted as street bets. For the same reason, 0-1-2-3 is treated as a corner
