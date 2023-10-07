@@ -48,7 +48,8 @@ import java.util.Scanner;
 class FreeCasino {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		boolean validInput = false, playAgain = false;
+		boolean validInput = false;
+		boolean playAgain = false;
 		String entry;
 		Game game = null;
 		ArrayList<Player> players;
