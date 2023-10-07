@@ -91,7 +91,7 @@ public class Deck {
 		for (int i = cards.size() - 1; i > 0; i--) {
 			Card temp = cards.get(i);
 			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo
-			                                    * shuffle, which we don't want */
+			                             * shuffle, which we don't want */
 			cards.set(i, cards.get(j));
 			cards.set(j, temp);
 		}
