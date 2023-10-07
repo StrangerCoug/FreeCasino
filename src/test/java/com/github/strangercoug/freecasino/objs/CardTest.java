@@ -61,11 +61,6 @@ class CardTest {
     }
 
     @Test
-    void testEqualsContract() {
-        EqualsVerifier.forClass(Card.class).verify();
-    }
-
-    @Test
     void testCompareToSameCard() {
         Card card1 = new Card(CardRank.ACE, CardSuit.SPADES);
         Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
@@ -91,6 +86,11 @@ class CardTest {
     void testCompareToNull() {
         Card card = new Card(CardRank.ACE, CardSuit.CLUBS);
         assertThrows(NullPointerException.class, () -> card.compareTo(null));
+    }
+
+    @Test
+    void testEqualsContract() {
+        EqualsVerifier.forClass(Card.class).verify();
     }
 
     @Test
