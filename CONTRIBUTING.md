@@ -8,5 +8,8 @@ In general, code should closely follow Oracle's style guide for both [Java](http
 
 We slightly differ from Oracle's indentation convention in that we follow the "tabs for indentation, spaces for alignment" principle in this project. The tab character counts _once_ toward the 80-character limit per line just like everything else. For continuation indents, use two hard tabs.
 
+### Testing
+Any class that overrides `equals()` and `hashCode()` (even implicitly), as well as all records, must have a test case where the overridden `equals()` and `hashCode()` are tested with `EqualsVerifier`. _If and only if_ `equals()` and `hashCode()` are inherited directly from `Object`, then you do not need to use `EqualsVerifier`. See [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts) by Baeldung to learn more about them and why they're important, and see [Error messages explained](https://jqno.nl/equalsverifier/errormessages/) by the official EqualsVerifier page if you need help understanding why a case being tested with the EqualsVerifier class is failing.
+
 ## Versioning scheme
 We use [Semantic Versioning 2.0.0](https://semver.org/) when assigning release numbers in this project.
