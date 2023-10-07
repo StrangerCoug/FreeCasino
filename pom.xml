@@ -49,6 +49,12 @@
 			<artifactId>mockito-core</artifactId>
 			<version>5.6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>3.15.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
