@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CardTest {
@@ -62,6 +63,34 @@ class CardTest {
     @Test
     void testEqualsContract() {
         EqualsVerifier.forClass(Card.class).verify();
+    }
+
+    @Test
+    void testCompareToSameCard() {
+        Card card1 = new Card(CardRank.ACE, CardSuit.SPADES);
+        Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
+        assertThat(card1.compareTo(card2), equalTo(0));
+    }
+
+    @Test
+    void testCompareToDifferentRank() {
+        Card card1 = new Card(CardRank.TWO, CardSuit.SPADES);
+        Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
+        assertThat(card2.compareTo(card1), greaterThan(0));
+    }
+
+
+    @Test
+    void testCompareToDifferentSuit() {
+        Card card1 = new Card(CardRank.ACE, CardSuit.CLUBS);
+        Card card2 = new Card(CardRank.ACE, CardSuit.SPADES);
+        assertThat(card2.compareTo(card1), greaterThan(0));
+    }
+
+    @Test
+    void testCompareToNull() {
+        Card card = new Card(CardRank.ACE, CardSuit.CLUBS);
+        assertThrows(NullPointerException.class, () -> card.compareTo(null));
     }
 
     @Test
