@@ -33,7 +33,6 @@ package com.github.strangercoug.freecasino.objs;
 import com.github.strangercoug.freecasino.enums.CardRank;
 import com.github.strangercoug.freecasino.enums.CardSuit;
 
-import java.security.SecureRandom;
 import java.util.LinkedList;
 
 import static com.github.strangercoug.freecasino.FreeCasino.rng;

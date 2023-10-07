@@ -30,8 +30,6 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
-import java.security.SecureRandom;
-
 import static com.github.strangercoug.freecasino.FreeCasino.rng;
 
 /**
