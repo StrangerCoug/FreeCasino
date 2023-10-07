@@ -32,6 +32,8 @@ package com.github.strangercoug.freecasino.objs;
 
 import java.security.SecureRandom;
 
+import static com.github.strangercoug.freecasino.FreeCasino.rng;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
@@ -39,7 +41,6 @@ import java.security.SecureRandom;
 public class Dice {
 	private final int[] dieFaces;
 	private final int sidesPerDie;
-	private final SecureRandom rng = new SecureRandom();
 
 	/**
 	 * Creates a number of dice.
@@ -112,7 +113,13 @@ public class Dice {
 	 * Rolls the dice.
 	 */
 	public void rollDice() {
-		for (int i = 0; i < dieFaces.length; i++)
-			dieFaces[i] = (rng.nextInt(sidesPerDie) + 1);
+		/* TODO: This is fine for alpha and beta testing, but at a later point I would
+		 * like to be able to detect whether there is an Internet connection and use
+		 * the random.org API to roll if possible. If something goes wrong, we fall
+		 * back to this.
+		 */
+		for (int i = 0; i < dieFaces.length; i++) {
+			dieFaces[i] = (rng.nextInt(1, sidesPerDie + 1));
+		}
 	}
 }

@@ -38,14 +38,23 @@ import com.github.strangercoug.freecasino.games.model.table.Blackjack;
 import com.github.strangercoug.freecasino.games.model.table.Craps;
 import com.github.strangercoug.freecasino.games.model.table.RedDog;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-class FreeCasino {
+public class FreeCasino {
+	/**
+	 * Backup RNG for offline use. Using the random.org API should be preferred
+	 * to calling this RNG, especially if it is necessary to shuffle a large
+	 * number of cards.
+	 */
+	public static final RandomGenerator rng = new SecureRandom();
+
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		boolean validInput = false;

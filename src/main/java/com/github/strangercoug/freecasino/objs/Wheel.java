@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
-import java.security.SecureRandom;
+import static com.github.strangercoug.freecasino.FreeCasino.rng;
 
 /**
  *
@@ -39,7 +39,6 @@ import java.security.SecureRandom;
 public class Wheel {
 	private final Object[] stops;
 	private int position;
-	private final SecureRandom rng = new SecureRandom();
 
 	public Wheel(Object[] stops) {
 		this.stops = stops;
@@ -51,6 +50,11 @@ public class Wheel {
 	}
 
 	public void spinWheel() {
+		/* TODO: This is fine for alpha and beta testing, but at a later point I would
+		 * like to be able to detect whether there is an Internet connection and use
+		 * the random.org API to roll if possible. If something goes wrong, we fall
+		 * back to this.
+		 */
 		position = rng.nextInt(stops.length);
 	}
 }

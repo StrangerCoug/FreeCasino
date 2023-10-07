@@ -36,6 +36,8 @@ import com.github.strangercoug.freecasino.enums.CardSuit;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 
+import static com.github.strangercoug.freecasino.FreeCasino.rng;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
@@ -45,7 +47,6 @@ public class Deck {
 	private final int numDecks;
 	private final boolean usesBlackJoker;
 	private final boolean usesRedJoker;
-	private final SecureRandom rng = new SecureRandom();
 
 	public Deck(int numDecks, boolean usesBlackJoker, boolean usesRedJoker) {
 		cards = new LinkedList<>();
@@ -82,16 +83,16 @@ public class Deck {
 		}
 	}
 
-	/* TODO: This is fine for alpha and beta testing, but at a later point I
-	 * would like to be able to detect whether there is an Internet connection and
-	 * use the random.org API to shuffle if possible. If something goes wrong, we
-	 * fall back to this.
-	 */
 	public void shuffleDeck() {
+		/* TODO: This is fine for alpha and beta testing, but at a later point I would
+		 * like to be able to detect whether there is an Internet connection and use
+		 * the random.org API to shuffle if possible. If something goes wrong, we fall
+		 * back to this.
+		 */
 		for (int i = cards.size() - 1; i > 0; i--) {
 			Card temp = cards.get(i);
-			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo shuffle,
-			                             * which we don't want */
+			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo
+			                                    * shuffle, which we don't want */
 			cards.set(i, cards.get(j));
 			cards.set(j, temp);
 		}
