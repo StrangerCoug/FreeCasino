@@ -31,7 +31,6 @@
 package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.exceptions.InsufficientFundsException;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
