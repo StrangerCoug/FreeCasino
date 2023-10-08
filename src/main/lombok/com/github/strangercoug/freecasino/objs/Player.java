@@ -28,29 +28,35 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino;
+package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.exceptions.InsufficientFundsException;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+
+import static java.util.Optional.ofNullable;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Data
+@AllArgsConstructor
 public class Player {
-	private final String name;
+	@Getter
+	protected final String name;
 	private final boolean isHuman;
+	@Getter
+	@EqualsAndHashCode.Exclude
 	private BigDecimal funds;
 	private static final String DEFAULT_NAME = "Anonymous";
 	private static final BigDecimal DEFAULT_STARTING_FUNDS = new BigDecimal(1000, MathContext.DECIMAL64);
-
-	public Player(String name, boolean isHuman, BigDecimal funds) {
-		this.name = name;
-		this.isHuman = isHuman;
-		this.funds = funds.setScale(2, RoundingMode.HALF_EVEN);
-	}
 
 	public Player() {
 		this(DEFAULT_NAME, true, DEFAULT_STARTING_FUNDS);
@@ -79,15 +85,8 @@ public class Player {
 		this(DEFAULT_NAME, isHuman, funds);
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public boolean isHuman() {
 		return isHuman;
-	}
-	public BigDecimal getFunds() {
-		return funds;
 	}
 
 	public void addFunds(BigDecimal fundsCredited) {
@@ -101,5 +100,10 @@ public class Player {
 					+ fundsDebited.setScale(2, RoundingMode.HALF_UP).toPlainString()
 					+ " with a balance of only " + funds.toPlainString());
 		funds = funds.subtract(fundsDebited.setScale(2, RoundingMode.HALF_UP));
+	}
+
+	@EqualsAndHashCode.Include
+	private BigDecimal getFundsForEquals() {
+		return ofNullable(funds).map(BigDecimal::stripTrailingZeros).orElse(null);
 	}
 }

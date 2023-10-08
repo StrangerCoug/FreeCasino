@@ -60,7 +60,7 @@
  */
 package com.github.strangercoug.freecasino.games.controller;
 
-import com.github.strangercoug.freecasino.Player;
+import com.github.strangercoug.freecasino.objs.Player;
 import com.github.strangercoug.freecasino.games.model.Game;
 import com.github.strangercoug.freecasino.games.view.GameView;
 

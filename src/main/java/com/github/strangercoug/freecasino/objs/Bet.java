@@ -30,7 +30,6 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
-import com.github.strangercoug.freecasino.Player;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;

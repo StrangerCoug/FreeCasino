@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freecasino.games.model.table;
 
-import com.github.strangercoug.freecasino.Player;
+import com.github.strangercoug.freecasino.objs.Player;
 import java.math.BigDecimal;
 
 /**

@@ -30,7 +30,7 @@
  */
 package com.github.strangercoug.freecasino.games.model;
 
-import com.github.strangercoug.freecasino.Player;
+import com.github.strangercoug.freecasino.objs.Player;
 
 import java.util.List;
 

@@ -37,6 +37,7 @@ import com.github.strangercoug.freecasino.games.model.table.BigSix;
 import com.github.strangercoug.freecasino.games.model.table.Blackjack;
 import com.github.strangercoug.freecasino.games.model.table.Craps;
 import com.github.strangercoug.freecasino.games.model.table.RedDog;
+import com.github.strangercoug.freecasino.objs.Player;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;

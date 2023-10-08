@@ -28,9 +28,13 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.github.strangercoug.freecasino;
+package com.github.strangercoug.freecasino.objs;
 
 import com.github.strangercoug.freecasino.exceptions.InsufficientFundsException;
+import com.github.strangercoug.freecasino.objs.BasicBlackjackBot;
+import com.github.strangercoug.freecasino.objs.Player;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,5 +70,13 @@ class PlayerTest {
 	@Test
 	void testSubtractFunds2() throws InsufficientFundsException {
 		assertThrows(InsufficientFundsException.class, () -> testPlayer.subtractFunds(excessiveTransactionAmount));
+	}
+
+	@Test
+	void TestEqualityContract() {
+		EqualsVerifier.forClass(Player.class)
+				.withRedefinedSubclass(BasicBlackjackBot.class)
+				.suppress(Warning.NONFINAL_FIELDS) // the funds field needs to be mutable
+				.verify();
 	}
 }

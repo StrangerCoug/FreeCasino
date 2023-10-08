@@ -30,8 +30,9 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
-import com.github.strangercoug.freecasino.Player;
 import com.github.strangercoug.freecasino.enums.Action;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * This bot plays basic blackjack strategy and does not count cards. For bots
@@ -39,7 +40,9 @@ import com.github.strangercoug.freecasino.enums.Action;
  * BlackjackBot} for that counting strategy should be used (or created if it
  * does not yet exist).
  */
-public class BasicBlackjackBot extends Player implements BlackjackBot {
+@EqualsAndHashCode(callSuper = true)
+@Data
+public final class BasicBlackjackBot extends Player implements BlackjackBot {
 	/* TODO: Ideally, this should follow basic strategy for any rule set; it
 	 * currently implements basic strategy for a specific rule set.
 	 */
