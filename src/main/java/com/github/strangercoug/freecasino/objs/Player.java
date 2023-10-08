@@ -82,10 +82,6 @@ public class Player {
 		this(DEFAULT_NAME, isHuman, funds);
 	}
 
-	public boolean isHuman() {
-		return isHuman;
-	}
-
 	public void addFunds(BigDecimal fundsCredited) {
 		funds = funds.add(fundsCredited.setScale(2, RoundingMode.HALF_UP));
 	}
