@@ -34,7 +34,6 @@ import com.github.strangercoug.freecasino.exceptions.InsufficientFundsException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
