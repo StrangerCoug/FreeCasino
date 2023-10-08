@@ -46,7 +46,6 @@ import static java.util.Optional.ofNullable;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 @Data
-@AllArgsConstructor
 public class Player {
 	private final String name;
 	private final boolean isHuman;
@@ -54,6 +53,12 @@ public class Player {
 	private BigDecimal funds;
 	private static final String DEFAULT_NAME = "Anonymous";
 	private static final BigDecimal DEFAULT_STARTING_FUNDS = new BigDecimal(1000, MathContext.DECIMAL64);
+
+	public Player(String name, boolean isHuman, BigDecimal funds) {
+		this.name = name;
+		this.isHuman = isHuman;
+		this.funds = funds.setScale(2, RoundingMode.HALF_EVEN);
+	}
 
 	public Player() {
 		this(DEFAULT_NAME, true, DEFAULT_STARTING_FUNDS);
