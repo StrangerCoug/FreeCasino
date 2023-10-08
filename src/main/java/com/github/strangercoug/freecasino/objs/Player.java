@@ -49,8 +49,7 @@ import static java.util.Optional.ofNullable;
 public class Player {
 	private final String name;
 	private final boolean isHuman;
-	@EqualsAndHashCode.Exclude
-	private BigDecimal funds;
+	@EqualsAndHashCode.Exclude private BigDecimal funds;
 	private static final String DEFAULT_NAME = "Anonymous";
 	private static final BigDecimal DEFAULT_STARTING_FUNDS = new BigDecimal(1000, MathContext.DECIMAL64);
 
