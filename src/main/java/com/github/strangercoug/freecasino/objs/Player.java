@@ -49,10 +49,8 @@ import static java.util.Optional.ofNullable;
 @Data
 @AllArgsConstructor
 public class Player {
-	@Getter
-	protected final String name;
+	private final String name;
 	private final boolean isHuman;
-	@Getter
 	@EqualsAndHashCode.Exclude
 	private BigDecimal funds;
 	private static final String DEFAULT_NAME = "Anonymous";
