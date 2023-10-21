@@ -30,35 +30,32 @@
  */
 package com.github.strangercoug.freecasino.enums;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-public enum CardRank {
-	TWO("Two"),
-	THREE("Three"),
-	FOUR("Four"),
-	FIVE("Five"),
-	SIX("Six"),
-	SEVEN("Seven"),
-	EIGHT("Eight"),
-	NINE("Nine"),
-	TEN("Ten"),
-	JACK("Jack"),
-	QUEEN("Queen"),
-	KING("King"),
-	ACE("Ace"),
-	JOKER("Joker");
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-	private final String name;
+import java.util.stream.Stream;
 
-	CardRank(String name){
-		this.name = name;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+class CardSuitTest {
+
+	@ParameterizedTest
+	@MethodSource("cardSuitToString")
+	void testCardSuit(CardSuit cardSuit, String string) {
+		assertThat(cardSuit.toString(), equalTo(string));
 	}
 
-	@Override
-	public String toString() {
-		return name;
+	private static Stream<Arguments> cardSuitToString() {
+		return Stream.of(
+				arguments(CardSuit.CLUBS, "Clubs"),
+				arguments(CardSuit.DIAMONDS, "Diamonds"),
+				arguments(CardSuit.HEARTS, "Hearts"),
+				arguments(CardSuit.SPADES, "Spades"),
+				arguments(CardSuit.BLACK, "Black"),
+				arguments(CardSuit.RED, "Red")
+		);
 	}
-
 }

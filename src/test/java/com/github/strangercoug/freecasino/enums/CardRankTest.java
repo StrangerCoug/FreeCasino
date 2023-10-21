@@ -30,35 +30,40 @@
  */
 package com.github.strangercoug.freecasino.enums;
 
-/**
- *
- * @author Jeffrey Hope <strangercoug@hotmail.com>
- */
-public enum CardRank {
-	TWO("Two"),
-	THREE("Three"),
-	FOUR("Four"),
-	FIVE("Five"),
-	SIX("Six"),
-	SEVEN("Seven"),
-	EIGHT("Eight"),
-	NINE("Nine"),
-	TEN("Ten"),
-	JACK("Jack"),
-	QUEEN("Queen"),
-	KING("King"),
-	ACE("Ace"),
-	JOKER("Joker");
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-	private final String name;
+import java.util.stream.Stream;
 
-	CardRank(String name){
-		this.name = name;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+class CardRankTest {
+
+	@ParameterizedTest
+	@MethodSource("cardRankToString")
+	void testPokerRank(CardRank cardRank, String string) {
+		assertThat(cardRank.toString(), equalTo(string));
 	}
 
-	@Override
-	public String toString() {
-		return name;
+	private static Stream<Arguments> cardRankToString() {
+		return Stream.of(
+				arguments(CardRank.TWO, "Two"),
+				arguments(CardRank.THREE, "Three"),
+				arguments(CardRank.FOUR, "Four"),
+				arguments(CardRank.FIVE, "Five"),
+				arguments(CardRank.SIX, "Six"),
+				arguments(CardRank.SEVEN, "Seven"),
+				arguments(CardRank.EIGHT, "Eight"),
+				arguments(CardRank.NINE, "Nine"),
+				arguments(CardRank.TEN, "Ten"),
+				arguments(CardRank.JACK, "Jack"),
+				arguments(CardRank.QUEEN, "Queen"),
+				arguments(CardRank.KING, "King"),
+				arguments(CardRank.ACE, "Ace"),
+				arguments(CardRank.JOKER, "Joker")
+		);
 	}
-
 }

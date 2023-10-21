@@ -41,11 +41,6 @@ import com.github.strangercoug.freecasino.enums.CardSuit;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public record Card(CardRank rank, CardSuit suit) implements Comparable<Card> {
-	private static final String[] rankNames = {"Two", "Three", "Four", "Five", "Six",
-		"Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace",
-		"Joker"};
-	private static final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades",
-		"Black", "Red"};
 
 	/**
 	 * This method is intended only for baccarat and variants of twenty-one. Use {@code getRank()} if the tens and face
@@ -110,9 +105,9 @@ public record Card(CardRank rank, CardSuit suit) implements Comparable<Card> {
 
 	@Override
 	public String toString() {
-		if (rank == CardRank.JOKER)
-			return suitNames[suit.ordinal()] + " " + rankNames[rank.ordinal()];
+		if (suit == CardSuit.BLACK || suit == CardSuit.RED)
+			return suit + " " + rank.toString();
 
-		return rankNames[rank.ordinal()] + " of " + suitNames[suit.ordinal()];
+		return rank.toString() + " of " + suit.toString();
 	}
 }

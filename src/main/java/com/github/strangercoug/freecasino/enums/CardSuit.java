@@ -35,5 +35,21 @@ package com.github.strangercoug.freecasino.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardSuit {
-	CLUBS, DIAMONDS, HEARTS, SPADES, BLACK, RED
+	CLUBS("Clubs"),
+	DIAMONDS("Diamonds"),
+	HEARTS("Hearts"),
+	SPADES("Spades"),
+	BLACK("Black"),
+	RED("Red");
+
+	private final String name;
+
+	CardSuit(String name){
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }
