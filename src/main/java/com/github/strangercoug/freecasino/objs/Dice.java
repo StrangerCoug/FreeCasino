@@ -44,8 +44,6 @@ public class Dice {
 	 * -- GETTER --
 	 *  This method should be used only for testing and error-checking. It is not
 	 *  recommended to call this method in the game logic.
-	 *
-	 * @return the number of sides per die
 	 */
 	@Getter
 	private final int sidesPerDie;
