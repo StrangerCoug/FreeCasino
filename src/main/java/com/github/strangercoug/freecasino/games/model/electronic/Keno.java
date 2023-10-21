@@ -31,6 +31,7 @@
 package com.github.strangercoug.freecasino.games.model.electronic;
 
 import com.github.strangercoug.freecasino.games.model.Game;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
@@ -38,27 +39,12 @@ import java.math.BigDecimal;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class Keno extends Game implements ElectronicGame {
 	private int creditsIn;
 	private int creditsWon;
 	private int creditsBet;
 	private BigDecimal denomination;
-
-	public int getCreditsIn() {
-		return creditsIn;
-	}
-
-	public int getCreditsWon() {
-		return creditsWon;
-	}
-
-	public int getCreditsBet() {
-		return creditsBet;
-	}
-
-	public BigDecimal getDenomination() {
-		return denomination;
-	}
 
 	public void setDenomination(BigDecimal denomination) {
 		this.denomination = denomination;

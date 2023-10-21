@@ -31,6 +31,7 @@
 package com.github.strangercoug.freecasino.games.model;
 
 import com.github.strangercoug.freecasino.objs.Player;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -40,15 +41,12 @@ import java.util.List;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public abstract class Game {
 	private List<Player> players;
 
 	public void setPlayers(List<Player> players) {
 		this.players = players;
-	}
-
-	public List<Player> getPlayers() {
-		return players;
 	}
 
 	public abstract void play();

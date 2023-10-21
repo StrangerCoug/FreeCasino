@@ -31,6 +31,7 @@
 package com.github.strangercoug.freecasino.games.model.electronic;
 
 import com.github.strangercoug.freecasino.games.model.Game;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
@@ -41,30 +42,18 @@ import java.math.BigDecimal;
 public abstract class Slots extends Game implements ElectronicGame {
 	private final byte[] reelStops;
 	private final int[][] payTable;
+	@Getter
 	private int creditsIn;
+	@Getter
 	private int creditsWon;
+	@Getter
 	private int creditsBet;
+	@Getter
 	private BigDecimal denomination;
 
 	protected Slots (byte[] reelStops, int[][] payTable) {
 		this.reelStops = reelStops;
 		this.payTable = payTable;
-	}
-
-	public int getCreditsIn() {
-		return creditsIn;
-	}
-
-	public int getCreditsWon() {
-		return creditsWon;
-	}
-
-	public int getCreditsBet() {
-		return creditsBet;
-	}
-
-	public BigDecimal getDenomination() {
-		return denomination;
 	}
 
 	public void setDenomination(BigDecimal denomination) {

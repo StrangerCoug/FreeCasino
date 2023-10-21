@@ -64,6 +64,7 @@ public abstract class Roulette extends Game implements TableGame {
 	 * {@code AmericanRoulette} and {@code EuropeanRoulette} classes for
 	 * details.
 	 */
+	@Getter
 	protected enum Stop {
 		ZERO("0", Color.GREEN), DOUBLE_ZERO("00", Color.GREEN),
 		ONE("1", Color.RED), TWO("2", Color.BLACK), THREE("3", Color.RED),
@@ -89,14 +90,6 @@ public abstract class Roulette extends Game implements TableGame {
 		Stop(String value, Color color) {
 			this.value = value;
 			this.color = color;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public Color getColor() {
-			return color;
 		}
 
 		public int getValueAsInt() {

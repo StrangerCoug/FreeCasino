@@ -33,6 +33,8 @@ package com.github.strangercoug.freecasino.games.model.table;
 import com.github.strangercoug.freecasino.games.model.Game;
 import com.github.strangercoug.freecasino.objs.Player;
 import com.github.strangercoug.freecasino.objs.Wheel;
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
 /**
@@ -42,6 +44,7 @@ import java.math.BigDecimal;
 public class BigSix extends Game implements TableGame {
 	private BigDecimal betMinimum;
 	private BigDecimal betMaximum;
+	@Getter
 	private enum Stop {
 		ONE(1), TWO(2), FIVE(5), TEN(10), TWENTY(20), JOKER(40), LOGO(40);
 		private final int value;
@@ -50,9 +53,6 @@ public class BigSix extends Game implements TableGame {
 			this.value = value;
 		}
 
-		public int getValue() {
-			return value;
-		}
 	}
 
 	@Override
