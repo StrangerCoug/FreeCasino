@@ -34,6 +34,7 @@ import com.github.strangercoug.freecasino.games.model.Game;
 import com.github.strangercoug.freecasino.objs.Player;
 import com.github.strangercoug.freecasino.objs.Bet;
 import com.github.strangercoug.freecasino.objs.Dice;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -58,6 +59,7 @@ public class Craps extends Game implements TableGame {
 	 * One-roll bets that are the equivalent of several one-roll bets placed simultaneously are not listed here.
 	 * Use a method to place the corresponding equivalents instead.
 	 */
+	@Getter
 	private enum BetType {
 		PASS(new BigDecimal(2)),
 		DONT_PASS(new BigDecimal(2)),
@@ -203,9 +205,6 @@ public class Craps extends Game implements TableGame {
 			this.odds = odds;
 		}
 
-		public BigDecimal getOdds() {
-			return odds;
-		}
 	}
 
 	private enum Point{

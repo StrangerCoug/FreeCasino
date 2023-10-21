@@ -30,6 +30,8 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
+import lombok.Getter;
+
 import static com.github.strangercoug.freecasino.FreeCasino.rng;
 
 /**
@@ -38,6 +40,14 @@ import static com.github.strangercoug.freecasino.FreeCasino.rng;
  */
 public class Dice {
 	private final int[] dieFaces;
+	/**
+	 * -- GETTER --
+	 *  This method should be used only for testing and error-checking. It is not
+	 *  recommended to call this method in the game logic.
+	 *
+	 * @return the number of sides per die
+	 */
+	@Getter
 	private final int sidesPerDie;
 
 	/**
@@ -73,16 +83,6 @@ public class Dice {
 		System.arraycopy(dieFaces, 0, theseDice, 0, dieFaces.length);
 
 		return theseDice;
-	}
-
-	/**
-	 * This method should be used only for testing and error-checking. It is not
-	 * recommended to call this method in the game logic.
-	 *
-	 * @return the number of sides per die
-	 */
-	public int getSidesPerDie() {
-		return sidesPerDie;
 	}
 
 	/**

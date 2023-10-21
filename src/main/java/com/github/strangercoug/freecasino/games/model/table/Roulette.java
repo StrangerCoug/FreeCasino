@@ -33,6 +33,8 @@ package com.github.strangercoug.freecasino.games.model.table;
 import com.github.strangercoug.freecasino.games.model.Game;
 import com.github.strangercoug.freecasino.objs.Player;
 import com.github.strangercoug.freecasino.objs.Wheel;
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
 /**
@@ -143,6 +145,7 @@ public abstract class Roulette extends Game implements TableGame {
 	 * counted as street bets. For the same reason, 0-1-2-3 is treated as a corner
 	 * bet despite technically being a form of the double street bet.
 	 */
+	@Getter
 	protected enum betType{
 		STRAIGHT(new BigDecimal(36)), SPLIT(new BigDecimal(18)),
 		STREET(new BigDecimal(12)), CORNER(new BigDecimal(9)),
@@ -159,9 +162,6 @@ public abstract class Roulette extends Game implements TableGame {
 			this.odds = odds;
 		}
 
-		public BigDecimal getOdds() {
-			return odds;
-		}
 	}
 
 	@Override

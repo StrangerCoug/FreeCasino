@@ -30,6 +30,8 @@
  */
 package com.github.strangercoug.freecasino.objs;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -38,6 +40,7 @@ import java.math.RoundingMode;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class Bet {
 	private final Player player;
 	private BigDecimal amountBet;
@@ -46,14 +49,6 @@ public class Bet {
 		this.player = player;
 		this.amountBet = amountBet.setScale(2, RoundingMode.HALF_EVEN);
 		player.subtractFunds(amountBet);
-	}
-
-	public Player getPlayer() {
-		return player;
-	}
-
-	public BigDecimal getAmountBet() {
-		return amountBet;
 	}
 
 	/**
