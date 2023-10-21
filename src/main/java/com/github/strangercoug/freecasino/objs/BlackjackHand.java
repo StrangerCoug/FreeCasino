@@ -35,31 +35,6 @@ import com.github.strangercoug.freecasino.enums.CardRank;
 public class BlackjackHand extends CardHand {
 
 	/**
-	 *
-	 *
-	 * @param card the card whose value is being checked
-	 * @return the card's value
-	 */
-	private int getCardValue(Card card) {
-		return switch (card.rank()) {
-			case ACE -> 1;
-			case TWO -> 2;
-			case THREE -> 3;
-			case FOUR -> 4;
-			case FIVE -> 5;
-			case SIX -> 6;
-			case SEVEN -> 7;
-			case EIGHT -> 8;
-			case NINE -> 9;
-			default -> 10;
-		};
-	}
-
-	/* TODO: Determine if there is a more efficient way to calculate a hand's
-	 * value and whether it's hard or soft than the next three methods.
-	 */
-
-	/**
 	 * Determines the value of a hand for the purposes of the game, correctly
 	 * treating an ace as 11 points when a hand is soft.
 	 *
@@ -89,7 +64,7 @@ public class BlackjackHand extends CardHand {
 	private int getHardValue() {
 		int total = 0;
 
-		for (Card card : hand) total += getCardValue(card);
+		for (Card card : hand) total += card.getPointValue();
 
 		return total;
 	}
@@ -119,7 +94,7 @@ public class BlackjackHand extends CardHand {
 	public boolean canSplit() {
 		if (hand.size() != 2)
 			return false;
-		return getCardValue(hand.get(0)) == getCardValue(hand.get(1));
+		return hand.get(0).getPointValue() == hand.get(1).getPointValue();
 	}
 
 	// TODO: Also allow restrictions based on dealer upcard or completely disabling surrendering.
