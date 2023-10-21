@@ -38,14 +38,14 @@ import static com.github.strangercoug.freecasino.FreeCasino.rng;
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class Dice {
 	private final int[] dieFaces;
 	/**
-	 * -- GETTER --
-	 *  This method should be used only for testing and error-checking. It is not
-	 *  recommended to call this method in the game logic.
+	 *  The getter fot this field should be used only for testing and
+	 *  error-checking. It is not recommended to call the getter in the game
+	 *  logic.
 	 */
-	@Getter
 	private final int sidesPerDie;
 
 	/**
@@ -73,14 +73,6 @@ public class Dice {
 	 */
 	public Dice() {
 		this(2, 6);
-	}
-
-	public int[] getDieFaces() {
-		int[] theseDice = new int[dieFaces.length];
-
-		System.arraycopy(dieFaces, 0, theseDice, 0, dieFaces.length);
-
-		return theseDice;
 	}
 
 	/**
