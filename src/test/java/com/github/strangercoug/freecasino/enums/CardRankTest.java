@@ -44,7 +44,7 @@ class CardRankTest {
 
 	@ParameterizedTest
 	@MethodSource("cardRankToString")
-	void testPokerRank(CardRank cardRank, String string) {
+	void testCardRank(CardRank cardRank, String string) {
 		assertThat(cardRank.toString(), equalTo(string));
 	}
 
