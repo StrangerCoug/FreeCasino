@@ -64,13 +64,15 @@ public class FreeCasino {
 
 	static {
 		RandomGenerator rng1;
+		log.info("Getting SecureRandom instance for the backup RNG...");
 		try {
 			rng1 = SecureRandom.getInstance("DRBG",
 							DrbgParameters.instantiation(256, PR_AND_RESEED, null));
+			log.info("Successfully got defined SecureRandom instance for the backup RNG.");
 		} catch (NoSuchAlgorithmException e) {
-			log.warning("Unable to get the defined SecureRandom instance; using the default SecureRandom instance. "
-					+ "This instance may have less than the desired bit security strength and may not support prediction "
-					+ "resistance or reseeding.");
+			log.warning("Unable to get the defined SecureRandom instance for the backup RNG; using the default " +
+					"SecureRandom instance. This instance may have less than the desired bit security strength and may " +
+					"not support prediction resistance or reseeding.");
 			rng1 = new SecureRandom();
 		}
 		rng = rng1;
