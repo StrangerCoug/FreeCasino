@@ -38,23 +38,43 @@ import com.github.strangercoug.freecasino.games.model.table.Blackjack;
 import com.github.strangercoug.freecasino.games.model.table.Craps;
 import com.github.strangercoug.freecasino.games.model.table.RedDog;
 import com.github.strangercoug.freecasino.objs.Player;
+import lombok.extern.java.Log;
 
+import java.security.DrbgParameters;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.random.RandomGenerator;
 
+import static java.security.DrbgParameters.Capability.PR_AND_RESEED;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Log
 public class FreeCasino {
 	/**
 	 * Backup RNG for offline use. Using the random.org API should be preferred
 	 * to calling this RNG, especially if it is necessary to shuffle a large
 	 * number of cards.
 	 */
-	public static final RandomGenerator rng = new SecureRandom();
+	public static final RandomGenerator rng;
+
+	static {
+		RandomGenerator rng1;
+		try {
+			rng1 = SecureRandom.getInstance("DRBG",
+							DrbgParameters.instantiation(256, PR_AND_RESEED, null));
+		} catch (NoSuchAlgorithmException e) {
+			log.warning("Unable to get the defined SecureRandom instance; using the default SecureRandom instance. "
+					+ "This instance may not have the desired bit security strength or support prediction resistance "
+					+ "or reseeding.");
+			rng1 = new SecureRandom();
+		}
+		rng = rng1;
+	}
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
