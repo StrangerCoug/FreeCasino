@@ -67,7 +67,7 @@ public class FreeCasino {
 		log.info("Getting SecureRandom instance for the backup RNG...");
 		try {
 			rng1 = SecureRandom.getInstance("DRBG",
-							DrbgParameters.instantiation(256, PR_AND_RESEED, null));
+							DrbgParameters.instantiation(256, PR_AND_RESEED, "FreeCasino".getBytes()));
 			log.info("Successfully got defined SecureRandom instance for the backup RNG.");
 		} catch (NoSuchAlgorithmException e) {
 			log.warning("Unable to get the defined SecureRandom instance for the backup RNG; using the default " +
