@@ -40,6 +40,7 @@ import com.github.strangercoug.freecasino.games.model.table.RedDog;
 import com.github.strangercoug.freecasino.objs.Player;
 import lombok.extern.java.Log;
 
+import java.nio.ByteBuffer;
 import java.security.DrbgParameters;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -64,10 +65,12 @@ public class FreeCasino {
 
 	static {
 		RandomGenerator rng1;
+		byte[] personalizationString = ByteBuffer.allocate(Long.BYTES).putLong(System.currentTimeMillis()).array();
+
 		log.info("Getting SecureRandom instance for the backup RNG...");
 		try {
 			rng1 = SecureRandom.getInstance("DRBG",
-							DrbgParameters.instantiation(256, PR_AND_RESEED, "FreeCasino".getBytes()));
+							DrbgParameters.instantiation(256, PR_AND_RESEED, personalizationString));
 			log.info("Successfully got defined SecureRandom instance for the backup RNG.");
 		} catch (NoSuchAlgorithmException e) {
 			log.warning("Unable to get the defined SecureRandom instance for the backup RNG; using the default " +
