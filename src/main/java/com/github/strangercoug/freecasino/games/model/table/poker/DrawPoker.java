@@ -44,9 +44,6 @@ public abstract class DrawPoker extends Poker implements TableGame {
 		play(BigDecimal.valueOf(5, 2), BigDecimal.valueOf(1000, 2));
 	}
 
-	public abstract void play(BigDecimal betMinimum,
-				BigDecimal betMaximum);
-
 	@Override
 	public boolean isValidBet(Player player, BigDecimal bet) {
 		return (bet.compareTo(player.getFunds()) < 1
