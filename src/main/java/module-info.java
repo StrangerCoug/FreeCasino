@@ -1,5 +1,6 @@
 module com.github.strangercoug.freecasino {
 	requires lombok;
+	requires java.logging;
 	exports com.github.strangercoug.freecasino.enums;
 	exports com.github.strangercoug.freecasino.exceptions;
 	exports com.github.strangercoug.freecasino.games.controller;
