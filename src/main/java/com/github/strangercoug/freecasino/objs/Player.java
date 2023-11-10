@@ -86,6 +86,11 @@ public class Player {
 	}
 
 	public void addFunds(BigDecimal fundsCredited) {
+		if (funds.add(fundsCredited.setScale(2, RoundingMode.HALF_UP))
+				.compareTo(BigDecimal.ZERO) < 0)
+			throw new InsufficientFundsException("Tried to debit "
+					+ fundsCredited.negate().setScale(2, RoundingMode.HALF_UP).toPlainString()
+					+ " with a balance of only " + funds.toPlainString());
 		funds = funds.add(fundsCredited.setScale(2, RoundingMode.HALF_UP));
 	}
 
