@@ -3,7 +3,7 @@
 This is planned to be a free and open source cross-platform Java casino program. I am still working on the basic structure, but the following games are planned for its initial release:
 1. Baccarat
 2. Big Six
-3. Blackjack
+3. Blackjack (the American version with a dealer hole card)
 4. Craps
 5. Keno
 6. Poker (many popular variations of both ring and video poker)
