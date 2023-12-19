@@ -19,7 +19,7 @@ jobs:
           java-version: 21
           distribution: 'temurin' # Alternative distribution options are available.
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4.0.1
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
