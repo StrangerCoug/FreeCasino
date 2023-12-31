@@ -38,10 +38,10 @@ import lombok.Getter;
 import java.math.BigDecimal;
 
 /**
- * Because of the need for a different wheel for American and European roulette,
- * this class is abstract. However, since they are otherwise very similar games,
- * most of the code will be here, with subclasses called only to handle the
- * differences between the games.
+ * Because of the need for different wheels for the different variations of
+ * roulette, this class is abstract. However, since they are otherwise very
+ * similar games, most of the code will be here, with subclasses called only to
+ * handle the differences between the games.
  * 
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
@@ -61,12 +61,13 @@ public abstract class Roulette extends Game implements TableGame {
 	 * the order of the stops.
 	 * <p>
 	 * The zeroes have special handling in this enum, see the
-	 * {@code AmericanRoulette} and {@code EuropeanRoulette} classes for
-	 * details.
+	 * {@code AmericanRoulette}, {@code EuropeanRoulette}, and {@code TripleZeroRoulette}
+	 * classes for details.
 	 */
 	@Getter
 	protected enum Stop {
 		ZERO("0", Color.GREEN), DOUBLE_ZERO("00", Color.GREEN),
+		TRIPLE_ZERO("000", Color.GREEN),
 		ONE("1", Color.RED), TWO("2", Color.BLACK), THREE("3", Color.RED),
 		FOUR("4", Color.BLACK), FIVE("5", Color.RED), SIX("6", Color.BLACK),
 		SEVEN("7", Color.RED), EIGHT("8", Color.BLACK), NINE("9", Color.RED),
