@@ -1,3 +1,5 @@
+_Note:_ I feel that I have made this too ambitious, so I archived this project in January 2024. You are welcome to use this code elsewhere or to continue development.
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=StrangerCoug_FreeCasino&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=StrangerCoug_FreeCasino)
 # Welcome to the FreeCasino project!
 This is planned to be a free and open source cross-platform Java casino program. I am still working on the basic structure, but the following games are planned for its initial release:
